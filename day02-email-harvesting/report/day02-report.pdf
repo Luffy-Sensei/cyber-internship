@@ -1,0 +1,179 @@
+# Day 02 Technical Report
+
+## Email Harvesting & Social Engineering Awareness
+
+**Cybersecurity Internship — Phase 1**
+
+### 1. Objective
+
+The objective of Day 02 was to understand the fundamentals of email harvesting and social-engineering exposure by developing a Python tool capable of extracting email addresses from an authorized webpage.
+
+The exercise also focused on maintaining appropriate ethical boundaries and distinguishing publicly accessible information from information that is authorized to collect.
+
+### 2. Laboratory Environment
+
+The exercise was conducted entirely within a controlled local laboratory.
+
+**Environment:**
+
+* Parrot OS
+* Apache HTTP Server
+* Python 3
+* Python virtual environment
+* Requests library
+* `jq` JSON processor
+* Localhost target: `127.0.0.1`
+
+Apache was configured and verified as running before testing.
+
+### 3. Methodology
+
+The tool follows this workflow:
+
+1. Validate the supplied URL.
+2. Confirm that HTTP or HTTPS is being used.
+3. Send an HTTP GET request.
+4. Retrieve the webpage content.
+5. Apply a regular expression to identify email-like strings.
+6. Normalize discovered addresses to lowercase.
+7. Remove duplicate addresses.
+8. Classify addresses using a conservative role-based prefix list.
+9. Generate security-awareness observations.
+10. Save the results as structured JSON.
+
+### 4. Email Extraction
+
+The project uses a regular expression to identify strings matching the general structure of an email address.
+
+A successful match establishes that a string resembles an email address.
+
+It does not establish that the mailbox:
+
+* Exists
+* Is active
+* Belongs to a particular person
+* Can receive messages
+
+This distinction is important when interpreting OSINT results.
+
+### 5. Security-Awareness Classification
+
+The tool identifies a limited set of recognized organizational prefixes, including:
+
+* `admin`
+* `billing`
+* `contact`
+* `finance`
+* `help`
+* `hr`
+* `info`
+* `sales`
+* `support`
+
+Addresses matching these prefixes are classified as **role-based**.
+
+All other addresses are classified as **unclassified** rather than automatically being labeled as individual accounts.
+
+This approach avoids making unsupported assumptions about the identity or ownership of an email address.
+
+### 6. Laboratory Results
+
+The controlled laboratory page successfully returned an HTTP `200` response.
+
+The initial test produced four unique email addresses.
+
+The adversarial test environment was additionally designed to test:
+
+* Duplicate handling
+* Case normalization
+* Multi-label domains
+* `mailto:` links
+* Invalid email-like strings
+* URL validation
+* HTTP error handling
+
+The scanner successfully generated structured JSON reports that could be inspected using `jq`.
+
+### 7. Error Handling
+
+The tool was tested against invalid and nonexistent resources.
+
+The program handles:
+
+* Network/request errors
+* Invalid URL schemes
+* Invalid URL structure
+* Output/file-system errors
+
+Instead of producing an uncontrolled Python traceback, the program reports the relevant error category and terminates cleanly.
+
+### 8. Security Considerations
+
+The Day 02 exercise involves direct HTTP interaction with a webpage because the scanner must retrieve HTML before email addresses can be extracted.
+
+Therefore, unlike passive third-party OSINT collection, the request creates an interaction with the web server.
+
+For this reason, testing was restricted to a locally controlled Apache environment.
+
+### 9. Defensive Perspective
+
+Publicly exposed organizational email addresses can increase exposure to phishing, impersonation, and social-engineering attempts.
+
+Organizations can reduce associated risks through measures such as:
+
+* SPF
+* DKIM
+* DMARC
+* MFA
+* Phishing-resistant authentication
+* Security-awareness training
+* Appropriate monitoring and protection of exposed accounts
+
+These technologies provide important defenses but do not eliminate all phishing or social-engineering risks.
+
+### 10. Ethical Boundary
+
+The exercise was performed against `127.0.0.1`, which represents the local machine.
+
+This ensured that testing did not intentionally interact with an unrelated organization's infrastructure.
+
+No credentials or private information were intentionally collected or published.
+
+### 11. Evidence
+
+The following evidence was captured during the exercise:
+
+1. Apache service status
+2. Successful email harvesting execution
+3. Generated JSON report
+4. Error-handling test
+
+Screenshots are stored in the project's `screenshots/` directory.
+
+### 12. Lessons Learned
+
+The exercise demonstrated that a relatively small Python program can automate the discovery of email-like strings from webpage content.
+
+More importantly, it demonstrated that automated collection must be separated from interpretation.
+
+A discovered string is evidence of a syntactic match, not proof of identity, mailbox validity, ownership, or authorization.
+
+The exercise also reinforced the importance of testing security tooling in controlled environments before applying techniques to real systems.
+
+### 13. Conclusion
+
+Day 02 successfully covered the fundamentals of email harvesting and social-engineering awareness.
+
+The completed tool demonstrates:
+
+* Python HTTP requests
+* Regular expressions
+* Data normalization
+* Deduplication
+* Conservative classification
+* Error handling
+* JSON reporting
+* Linux-based cybersecurity workflow
+* Ethical laboratory testing
+
+**Status: COMPLETE**

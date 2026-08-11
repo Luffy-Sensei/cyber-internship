@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+*.key
+*.pem
+*.token
+secrets.*
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*~

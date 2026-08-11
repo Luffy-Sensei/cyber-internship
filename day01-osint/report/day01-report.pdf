@@ -1,0 +1,38 @@
+DAY 01 — OSINT & PASSIVE RECONNAISSANCE
+Python-based passive intelligence collection lab
+1. Objective
+Understand OSINT and passive reconnaissance, then implement a Python scanner that collects publicly available WHOIS, DNS,
+IP-resolution, geolocation, indexed host intelligence, and passive subdomain information without intentionally probing target
+infrastructure.
+2. Lab Environment
+Parrot OS VM; Python 3; requests; dnspython; python-whois; jq 1.7; JSON/TXT output.
+3. Methodology
+The scanner normalizes the supplied hostname, performs WHOIS and recursive DNS lookups, resolves IPv4/IPv6, queries
+third-party geolocation and Shodan InternetDB services, and performs passive subdomain discovery through crt.sh, HackerTarget,
+and AlienVault OTX. Independent lookups run concurrently and provider failures are captured.
+4. Implementation Review
+The scanner is modular, uses ThreadPoolExecutor for independent lookups, handles HTTP/provider failures without terminating the
+complete scan, and exports structured JSON plus subdomains.txt. Terminology was revised to avoid absolute claims such as
+“100% passive” and “zero digital footprint.”
+5. Observed Results — Private Lab Evidence
+The final run resolved scanme.nmap.org to 45.33.32.156. WHOIS returned dates and nameservers but a null registrar field. DNS
+returned an A record and SPF-related TXT data; no AAAA, MX, or NS answer was returned for the queried hostname. IP
+geolocation associated the address with Falkenstein, Saxony, Germany and Hetzner Online GmbH. Shodan InternetDB returned
+indexed ports, hostnames, CPEs, and two CVE identifiers. Passive subdomain discovery returned one unique result while two
+providers failed (HTTP 404 and timeout).
+6. Key Analytical Lessons
+A DNS A record proves a hostname-to-IPv4 mapping, not current availability. Indexed ports are observations, not live verification.
+Port numbers do not prove protocols. IP geolocation describes approximate infrastructure location, not necessarily organizational
+location. Null WHOIS fields do not prove that information is nonexistent. OSINT analysis should distinguish observation from
+interpretation and conclusion.
+7. Scope, Ethics & Publication
+No intentional direct probing of the target IP or discovered services was performed. Raw reconnaissance data containing real
+infrastructure details should remain private. Public GitHub artifacts should use sanitized sample data and exclude unnecessary
+third-party infrastructure details.
+8. Validation
+jq successfully parsed scan.json. python3 -m py_compile osint_scanner.py completed without syntax errors. The revised scanner
+source also passed syntax validation.
+9. Conclusion
+Day 01 objectives were completed. The project demonstrates passive OSINT collection, third-party intelligence aggregation,
+structured output, concurrency, error handling, and careful interpretation of incomplete or indexed evidence.
+Day 01 Status: COMPLETE
