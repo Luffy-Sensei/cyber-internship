@@ -19,3 +19,5 @@ secrets.*
 Thumbs.db
 *.swp
 *~
+# Raw reconnaissance outputs
+day01-osint/output/
