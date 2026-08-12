@@ -1,0 +1,160 @@
+{
+    "scan_metadata": {
+        "timestamp_utc": "2026-08-12T06:54:06.177349+00:00",
+        "urls_analyzed": 4
+    },
+    "results": [
+        {
+            "url": "https://paypal-login.evil.com/verify",
+            "domain_breakdown": {
+                "subdomain": "paypal-login",
+                "registered_domain": "evil.com",
+                "tld": "com"
+            },
+            "risk_assessment": {
+                "score": 55,
+                "level": "MEDIUM",
+                "indicator_count": 2
+            },
+            "risk_categories": {
+                "domain_deception": [],
+                "brand_abuse": [
+                    {
+                        "type": "subdomain_brand_abuse",
+                        "severity": "high",
+                        "points": 40,
+                        "reason": "Known brand 'paypal' used in subdomain, but registered domain is 'evil.com'."
+                    }
+                ],
+                "technical_risks": [],
+                "content_risks": [
+                    {
+                        "type": "path_keyword",
+                        "severity": "low",
+                        "points": 15,
+                        "reason": "Authentication keyword 'verify' found in URL path."
+                    }
+                ],
+                "infrastructure": []
+            },
+            "indicators": [
+                {
+                    "type": "subdomain_brand_abuse",
+                    "severity": "high",
+                    "points": 40,
+                    "reason": "Known brand 'paypal' used in subdomain, but registered domain is 'evil.com'."
+                },
+                {
+                    "type": "path_keyword",
+                    "severity": "low",
+                    "points": 15,
+                    "reason": "Authentication keyword 'verify' found in URL path."
+                }
+            ]
+        },
+        {
+            "url": "https://github.com",
+            "domain_breakdown": {
+                "subdomain": "",
+                "registered_domain": "github.com",
+                "tld": "com"
+            },
+            "risk_assessment": {
+                "score": 0,
+                "level": "LOW",
+                "indicator_count": 0
+            },
+            "risk_categories": {
+                "domain_deception": [],
+                "brand_abuse": [],
+                "technical_risks": [],
+                "content_risks": [],
+                "infrastructure": []
+            },
+            "indicators": []
+        },
+        {
+            "url": "http://example.com",
+            "domain_breakdown": {
+                "subdomain": "",
+                "registered_domain": "example.com",
+                "tld": "com"
+            },
+            "risk_assessment": {
+                "score": 25,
+                "level": "LOW",
+                "indicator_count": 1
+            },
+            "risk_categories": {
+                "domain_deception": [],
+                "brand_abuse": [],
+                "technical_risks": [
+                    {
+                        "type": "transport",
+                        "severity": "medium",
+                        "points": 25,
+                        "reason": "URL connection is unencrypted (HTTP)."
+                    }
+                ],
+                "content_risks": [],
+                "infrastructure": []
+            },
+            "indicators": [
+                {
+                    "type": "transport",
+                    "severity": "medium",
+                    "points": 25,
+                    "reason": "URL connection is unencrypted (HTTP)."
+                }
+            ]
+        },
+        {
+            "url": "https://192.0.2.10/login",
+            "domain_breakdown": {
+                "subdomain": "",
+                "registered_domain": "192.0.2.10",
+                "tld": "IP"
+            },
+            "risk_assessment": {
+                "score": 55,
+                "level": "MEDIUM",
+                "indicator_count": 2
+            },
+            "risk_categories": {
+                "domain_deception": [],
+                "brand_abuse": [],
+                "technical_risks": [],
+                "content_risks": [
+                    {
+                        "type": "path_keyword",
+                        "severity": "low",
+                        "points": 15,
+                        "reason": "Authentication keyword 'login' found in URL path."
+                    }
+                ],
+                "infrastructure": [
+                    {
+                        "type": "raw_ip_address",
+                        "severity": "high",
+                        "points": 40,
+                        "reason": "URL uses a raw IP address (192.0.2.10) instead of a registered domain name."
+                    }
+                ]
+            },
+            "indicators": [
+                {
+                    "type": "raw_ip_address",
+                    "severity": "high",
+                    "points": 40,
+                    "reason": "URL uses a raw IP address (192.0.2.10) instead of a registered domain name."
+                },
+                {
+                    "type": "path_keyword",
+                    "severity": "low",
+                    "points": 15,
+                    "reason": "Authentication keyword 'login' found in URL path."
+                }
+            ]
+        }
+    ]
+}
