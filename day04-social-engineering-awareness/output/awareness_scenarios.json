@@ -1,0 +1,277 @@
+{
+    "scan_metadata": {
+        "timestamp_utc": "2026-08-13T05:54:43.268676+00:00",
+        "generator": "Day 04 Social Engineering Awareness Engine v2.2",
+        "scenarios_generated": 2,
+        "target_organization": "Sqrock IT"
+    },
+    "results": [
+        {
+            "scenario_id": "SE-20260813055443267853-9A5B",
+            "scenario_type": "vishing",
+            "channel": "Voice Call",
+            "description": "Voice phishing - attacker impersonates authority figure over phone",
+            "complexity": "beginner",
+            "target_company": "Sqrock IT",
+            "impersonated_role": "HR Representative",
+            "pretext": "System Update Required",
+            "psychological_triggers": [
+                {
+                    "trigger": "authority",
+                    "name": "Authority",
+                    "description": "The scenario relies on an apparently trusted role or organization to increase perceived legitimacy.",
+                    "example": "Caller claims to be from IT Security Department",
+                    "defense": "Always verify identity through independent channels"
+                },
+                {
+                    "trigger": "fear",
+                    "name": "Fear",
+                    "description": "The scenario introduces a possible negative consequence to encourage immediate action.",
+                    "example": "Your account will be permanently locked",
+                    "defense": "Stay calm and verify through official channels"
+                },
+                {
+                    "trigger": "liking",
+                    "name": "Liking",
+                    "description": "The scenario uses friendliness, rapport, or common interests to increase trust.",
+                    "example": "Caller is friendly and 'helpful' to gain trust",
+                    "defense": "Remember: legitimate agents remain professional"
+                }
+            ],
+            "script": {
+                "phase_1_opener": "Caller claims to be HR Representative from Sqrock IT. Uses professional tone to establish credibility.",
+                "phase_2_pretext": "The caller explains: 'System Update Required' and states this requires immediate attention.",
+                "phase_3_hook": "The scenario introduces an account or security concern designed to create urgency and fear.",
+                "phase_4_request": "The simulated caller attempts to obtain sensitive information such as passwords, OTPs, or account details.",
+                "phase_5_pressure": "If met with resistance, the caller increases urgency by threatening account suspension or security breaches.",
+                "awareness_note": "This script demonstrates how vishing attacks use authority and fear to manipulate victims into sharing sensitive data."
+            },
+            "red_flags": [
+                {
+                    "indicator": "Credential Request",
+                    "severity": "critical",
+                    "reason": "A caller requesting passwords, authentication codes, or other secrets is a major warning sign."
+                },
+                {
+                    "indicator": "Unexpected Contact",
+                    "severity": "high",
+                    "reason": "Unsolicited calls about account problems should be independently verified."
+                },
+                {
+                    "indicator": "Authority Impersonation",
+                    "severity": "high",
+                    "reason": "Claiming to represent IT, security, a bank, or another trusted authority can be used to create false trust."
+                },
+                {
+                    "indicator": "Urgency or Pressure",
+                    "severity": "medium",
+                    "reason": "Pressure to act immediately can prevent the recipient from independently verifying the request."
+                },
+                {
+                    "indicator": "Threats of Consequences",
+                    "severity": "critical",
+                    "reason": "Threatening account suspension, legal action, or other consequences is a common manipulation tactic."
+                }
+            ],
+            "defensive_guidance": [
+                {
+                    "action": "Never disclose secrets",
+                    "detail": "Never share passwords, authentication codes, or security questions over the phone."
+                },
+                {
+                    "action": "Verify independently",
+                    "detail": "End the call and contact the organization using official phone numbers from their website."
+                },
+                {
+                    "action": "Don't trust caller ID",
+                    "detail": "Caller ID can be spoofed to display any number the attacker chooses."
+                },
+                {
+                    "action": "Take your time",
+                    "detail": "Legitimate organizations will not pressure you to make immediate decisions."
+                },
+                {
+                    "action": "Report suspicious calls",
+                    "detail": "Report suspicious social-engineering attempts to your security team or IT department."
+                }
+            ],
+            "quiz": [
+                {
+                    "question": "What type of social engineering attack is this?",
+                    "options": [
+                        "Vishing (Voice Phishing)",
+                        "Smishing (SMS Phishing)",
+                        "Phishing (Email)",
+                        "Physical intrusion"
+                    ],
+                    "correct_answer": 0,
+                    "explanation": "This is a vishing attack because it uses voice call as the attack vector."
+                },
+                {
+                    "question": "What is the primary psychological trigger being used?",
+                    "options": [
+                        "Authority",
+                        "Scarcity",
+                        "Fear",
+                        "Liking",
+                        "Urgency"
+                    ],
+                    "correct_answer": 0,
+                    "explanation": "The scenario relies on an apparently trusted role or organization to increase perceived legitimacy."
+                },
+                {
+                    "question": "What is the BEST response to this scenario?",
+                    "options": [
+                        "Provide the requested information",
+                        "Click the link to verify",
+                        "Independently verify through official channels",
+                        "Ignore it completely"
+                    ],
+                    "correct_answer": 2,
+                    "explanation": "Always verify independently using official contact information, not information provided by the attacker."
+                }
+            ]
+        },
+        {
+            "scenario_id": "SE-20260813055443268645-CC6A",
+            "scenario_type": "smishing",
+            "channel": "SMS/Text Message",
+            "description": "SMS phishing - attacker sends malicious links via text",
+            "complexity": "beginner",
+            "target_company": "Sqrock IT",
+            "impersonated_role": "Mobile Carrier",
+            "pretext": "Suspicious Login Detected",
+            "psychological_triggers": [
+                {
+                    "trigger": "authority",
+                    "name": "Authority",
+                    "description": "The scenario relies on an apparently trusted role or organization to increase perceived legitimacy.",
+                    "example": "Caller claims to be from IT Security Department",
+                    "defense": "Always verify identity through independent channels"
+                },
+                {
+                    "trigger": "urgency",
+                    "name": "Urgency",
+                    "description": "The scenario pressures the target to act quickly without thinking critically.",
+                    "example": "Immediate action required within 15 minutes",
+                    "defense": "Take a moment to pause and evaluate the request independently"
+                },
+                {
+                    "trigger": "scarcity",
+                    "name": "Scarcity",
+                    "description": "The scenario presents a limited-time opportunity or consequence to create artificial value.",
+                    "example": "Only 2 hours left to verify your account",
+                    "defense": "Legitimate organizations don't use artificial deadlines"
+                }
+            ],
+            "script": {
+                "message_content": "[Sqrock IT] ALERT: Suspicious Login Detected. Verify your account immediately: https://secure-login-verify.net/sqrock-it-suspicious-login-detected-a5eb10",
+                "pretext": "The message claims that action is required because of: Suspicious Login Detected.",
+                "hook": "The message uses urgency and fear to encourage the recipient to click the link without verification.",
+                "request": "The link leads to a fake login page designed to steal credentials or install malware.",
+                "awareness_note": "This demonstrates how smishing uses shortened URLs and urgency to trick victims into clicking malicious links."
+            },
+            "red_flags": [
+                {
+                    "indicator": "Suspicious Link",
+                    "severity": "critical",
+                    "reason": "Unexpected links in SMS messages should not be trusted without independent verification."
+                },
+                {
+                    "indicator": "Unexpected Message",
+                    "severity": "high",
+                    "reason": "An unsolicited security or account notification should be verified through an official channel."
+                },
+                {
+                    "indicator": "Urgency or Pressure",
+                    "severity": "high",
+                    "reason": "Threats of immediate account suspension can encourage impulsive clicking."
+                },
+                {
+                    "indicator": "Sender Impersonation",
+                    "severity": "high",
+                    "reason": "A message may claim to represent a trusted organization without actually originating from it."
+                },
+                {
+                    "indicator": "Too Good to Be True",
+                    "severity": "medium",
+                    "reason": "Promises of prizes, refunds, or rewards are often used to entice victims to click malicious links."
+                }
+            ],
+            "defensive_guidance": [
+                {
+                    "action": "Don't click links",
+                    "detail": "Never click links in unexpected SMS messages, even if they appear legitimate."
+                },
+                {
+                    "action": "Verify through official apps",
+                    "detail": "Check account status through the organization's official website or mobile application."
+                },
+                {
+                    "action": "Don't reply to suspicious texts",
+                    "detail": "Replying confirms your number is active and may lead to more attacks."
+                },
+                {
+                    "action": "Block and report",
+                    "detail": "Block the sender and report the message to your mobile carrier and security team."
+                },
+                {
+                    "action": "Forward to spam services",
+                    "detail": "Forward suspicious texts to 7726 (SPAM) in the US or your country's equivalent."
+                }
+            ],
+            "quiz": [
+                {
+                    "question": "What type of social engineering attack is this?",
+                    "options": [
+                        "Vishing (Voice Phishing)",
+                        "Smishing (SMS Phishing)",
+                        "Phishing (Email)",
+                        "Physical intrusion"
+                    ],
+                    "correct_answer": 1,
+                    "explanation": "This is a smishing attack because it uses sms/text message as the attack vector."
+                },
+                {
+                    "question": "What is the primary psychological trigger being used?",
+                    "options": [
+                        "Authority",
+                        "Scarcity",
+                        "Fear",
+                        "Liking",
+                        "Urgency"
+                    ],
+                    "correct_answer": 0,
+                    "explanation": "The scenario relies on an apparently trusted role or organization to increase perceived legitimacy."
+                },
+                {
+                    "question": "What is the BEST response to this scenario?",
+                    "options": [
+                        "Provide the requested information",
+                        "Click the link to verify",
+                        "Independently verify through official channels",
+                        "Ignore it completely"
+                    ],
+                    "correct_answer": 2,
+                    "explanation": "Always verify independently using official contact information, not information provided by the attacker."
+                }
+            ]
+        }
+    ],
+    "statistics": {
+        "total_scenarios": 2,
+        "channels": {
+            "SMS/Text Message": 1,
+            "Voice Call": 1
+        },
+        "triggers_used": {
+            "Authority": 2,
+            "Fear": 1,
+            "Liking": 1,
+            "Scarcity": 1,
+            "Urgency": 1
+        },
+        "red_flags_total": 10,
+        "defensive_guidance_total": 10
+    }
+}

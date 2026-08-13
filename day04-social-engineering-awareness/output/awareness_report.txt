@@ -1,0 +1,104 @@
+======================================================================
+SOCIAL ENGINEERING AWARENESS REPORT
+Day 04: Vishing & Smishing Scenarios
+======================================================================
+
+Generated: 2026-08-13T05:54:43.268676+00:00
+Organization: Sqrock IT
+Total Scenarios: 2
+
+----------------------------------------------------------------------
+SCENARIO 1: VISHING
+----------------------------------------------------------------------
+Channel: Voice Call
+Target: Sqrock IT
+Impersonated Role: HR Representative
+Pretext: System Update Required
+
+PSYCHOLOGICAL TRIGGERS:
+  • Authority: The scenario relies on an apparently trusted role or organization to increase perceived legitimacy.
+  • Fear: The scenario introduces a possible negative consequence to encourage immediate action.
+  • Liking: The scenario uses friendliness, rapport, or common interests to increase trust.
+
+SCRIPT:
+  [PHASE 1 OPENER]
+  Caller claims to be HR Representative from Sqrock IT. Uses professional tone to establish credibility.
+  [PHASE 2 PRETEXT]
+  The caller explains: 'System Update Required' and states this requires immediate attention.
+  [PHASE 3 HOOK]
+  The scenario introduces an account or security concern designed to create urgency and fear.
+  [PHASE 4 REQUEST]
+  The simulated caller attempts to obtain sensitive information such as passwords, OTPs, or account details.
+  [PHASE 5 PRESSURE]
+  If met with resistance, the caller increases urgency by threatening account suspension or security breaches.
+  [AWARENESS NOTE]
+  This script demonstrates how vishing attacks use authority and fear to manipulate victims into sharing sensitive data.
+
+RED FLAGS:
+  • Credential Request (critical): A caller requesting passwords, authentication codes, or other secrets is a major warning sign.
+  • Unexpected Contact (high): Unsolicited calls about account problems should be independently verified.
+  • Authority Impersonation (high): Claiming to represent IT, security, a bank, or another trusted authority can be used to create false trust.
+  • Urgency or Pressure (medium): Pressure to act immediately can prevent the recipient from independently verifying the request.
+  • Threats of Consequences (critical): Threatening account suspension, legal action, or other consequences is a common manipulation tactic.
+
+DEFENSIVE GUIDANCE:
+  • Never disclose secrets: Never share passwords, authentication codes, or security questions over the phone.
+  • Verify independently: End the call and contact the organization using official phone numbers from their website.
+  • Don't trust caller ID: Caller ID can be spoofed to display any number the attacker chooses.
+  • Take your time: Legitimate organizations will not pressure you to make immediate decisions.
+  • Report suspicious calls: Report suspicious social-engineering attempts to your security team or IT department.
+
+QUIZ QUESTIONS:
+  Q1: What type of social engineering attack is this?
+  Correct Answer: Vishing (Voice Phishing)
+  Q2: What is the primary psychological trigger being used?
+  Correct Answer: Authority
+  Q3: What is the BEST response to this scenario?
+  Correct Answer: Independently verify through official channels
+
+----------------------------------------------------------------------
+SCENARIO 2: SMISHING
+----------------------------------------------------------------------
+Channel: SMS/Text Message
+Target: Sqrock IT
+Impersonated Role: Mobile Carrier
+Pretext: Suspicious Login Detected
+
+PSYCHOLOGICAL TRIGGERS:
+  • Authority: The scenario relies on an apparently trusted role or organization to increase perceived legitimacy.
+  • Urgency: The scenario pressures the target to act quickly without thinking critically.
+  • Scarcity: The scenario presents a limited-time opportunity or consequence to create artificial value.
+
+SCRIPT:
+  [MESSAGE CONTENT]
+  [Sqrock IT] ALERT: Suspicious Login Detected. Verify your account immediately: https://secure-login-verify.net/sqrock-it-suspicious-login-detected-a5eb10
+  [PRETEXT]
+  The message claims that action is required because of: Suspicious Login Detected.
+  [HOOK]
+  The message uses urgency and fear to encourage the recipient to click the link without verification.
+  [REQUEST]
+  The link leads to a fake login page designed to steal credentials or install malware.
+  [AWARENESS NOTE]
+  This demonstrates how smishing uses shortened URLs and urgency to trick victims into clicking malicious links.
+
+RED FLAGS:
+  • Suspicious Link (critical): Unexpected links in SMS messages should not be trusted without independent verification.
+  • Unexpected Message (high): An unsolicited security or account notification should be verified through an official channel.
+  • Urgency or Pressure (high): Threats of immediate account suspension can encourage impulsive clicking.
+  • Sender Impersonation (high): A message may claim to represent a trusted organization without actually originating from it.
+  • Too Good to Be True (medium): Promises of prizes, refunds, or rewards are often used to entice victims to click malicious links.
+
+DEFENSIVE GUIDANCE:
+  • Don't click links: Never click links in unexpected SMS messages, even if they appear legitimate.
+  • Verify through official apps: Check account status through the organization's official website or mobile application.
+  • Don't reply to suspicious texts: Replying confirms your number is active and may lead to more attacks.
+  • Block and report: Block the sender and report the message to your mobile carrier and security team.
+  • Forward to spam services: Forward suspicious texts to 7726 (SPAM) in the US or your country's equivalent.
+
+QUIZ QUESTIONS:
+  Q1: What type of social engineering attack is this?
+  Correct Answer: Smishing (SMS Phishing)
+  Q2: What is the primary psychological trigger being used?
+  Correct Answer: Authority
+  Q3: What is the BEST response to this scenario?
+  Correct Answer: Independently verify through official channels

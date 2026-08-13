@@ -1,5 +1,6 @@
 # Python
 __pycache__/
+*.pyc
 *.py[cod]
 
 # Virtual environments
@@ -21,3 +22,4 @@ Thumbs.db
 *~
 # Raw reconnaissance outputs
 day01-osint/output/
+*.log
