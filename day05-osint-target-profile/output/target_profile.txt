@@ -1,0 +1,44 @@
+======================================================================
+DAY 05 — GITHUB OSINT TARGET PROFILE
+======================================================================
+
+Username: torvalds
+Name: Linus Torvalds
+Company: Linux Foundation
+Location: Portland, OR
+Public repositories: 12
+Public gists: 1
+Followers: 316460
+Following: 0
+
+BIO
+----------------------------------------------------------------------
+No public bio.
+
+TECHNOLOGY PROFILE
+----------------------------------------------------------------------
+- C: 10 repositories
+- OpenSCAD: 1 repositories
+- C++: 1 repositories
+
+EXPOSURE INDICATORS
+----------------------------------------------------------------------
+- [LOW] public_identity: A public display name is available.
+- [MEDIUM] organizational_affiliation: A public company/organization field is available.
+- [MEDIUM] location_exposure: A public location field is available.
+- [MEDIUM] repository_exposure: 12 public repositories were observable.
+- [MEDIUM] gist_exposure: 1 public code gists were discovered.
+- [MEDIUM] technology_exposure: Repository metadata exposes primary programming languages.
+
+DEFENSIVE GUIDANCE
+----------------------------------------------------------------------
+- Review publicly visible profile information.
+- Remove unnecessary organizational or location details.
+- Review public repositories and gists for accidental sensitive leaks.
+- Avoid publishing credentials, tokens, private keys, or secrets.
+- Review repository descriptions and metadata for unnecessary exposure.
+- Use secret-scanning tools (e.g., Trufflehog, GitGuardian) on commit history.
+
+======================================================================
+END OF REPORT
+======================================================================

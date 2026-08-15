@@ -1,0 +1,220 @@
+{
+  "scan_metadata": {
+    "timestamp_utc": "2026-08-15T11:10:05.121223+00:00",
+    "tool": "Day 05 GitHub Target Profile Aggregator",
+    "tool_version": "1.1",
+    "target_username": "torvalds",
+    "repositories_analyzed": 12,
+    "gists_found": 1
+  },
+  "target_profile": {
+    "username": "torvalds",
+    "name": "Linus Torvalds",
+    "company": "Linux Foundation",
+    "location": "Portland, OR",
+    "bio": null,
+    "public_repositories": 12,
+    "public_gists": 1,
+    "followers": 316460,
+    "following": 0,
+    "account_created": "2011-09-03T15:26:22Z",
+    "profile_url": "https://github.com/torvalds"
+  },
+  "technology_profile": {
+    "primary_languages": {
+      "C": 10,
+      "OpenSCAD": 1,
+      "C++": 1
+    },
+    "language_count": 3
+  },
+  "repository_exposure": [
+    {
+      "name": "linux",
+      "description": "Linux kernel source tree",
+      "language": "C",
+      "stars": 242892,
+      "forks": 63933,
+      "is_fork": false,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-15T11:05:46Z",
+      "html_url": "https://github.com/torvalds/linux"
+    },
+    {
+      "name": "GuitarPedal",
+      "description": "Linus learns analog circuits",
+      "language": "C",
+      "stars": 2239,
+      "forks": 102,
+      "is_fork": false,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-15T06:45:24Z",
+      "html_url": "https://github.com/torvalds/GuitarPedal"
+    },
+    {
+      "name": "1590A",
+      "description": "Random odd guitar pedal design in kicad",
+      "language": "OpenSCAD",
+      "stars": 570,
+      "forks": 20,
+      "is_fork": false,
+      "archived": true,
+      "visibility": "public",
+      "updated_at": "2026-08-14T22:40:49Z",
+      "html_url": "https://github.com/torvalds/1590A"
+    },
+    {
+      "name": "libgit2",
+      "description": "A cross-platform, linkable library implementation of Git that you can use in your application.",
+      "language": "C",
+      "stars": 378,
+      "forks": 30,
+      "is_fork": true,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-14T16:36:49Z",
+      "html_url": "https://github.com/torvalds/libgit2"
+    },
+    {
+      "name": "uemacs",
+      "description": "Random version of microemacs with my private modificatons",
+      "language": "C",
+      "stars": 2101,
+      "forks": 318,
+      "is_fork": false,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-14T14:40:12Z",
+      "html_url": "https://github.com/torvalds/uemacs"
+    },
+    {
+      "name": "HunspellColorize",
+      "description": "Wrapper around 'less' to colorize spelling mistakes using Hunspell",
+      "language": "C",
+      "stars": 360,
+      "forks": 17,
+      "is_fork": false,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-14T13:03:59Z",
+      "html_url": "https://github.com/torvalds/HunspellColorize"
+    },
+    {
+      "name": "AudioNoise",
+      "description": "Random digital audio effects",
+      "language": "C",
+      "stars": 4459,
+      "forks": 216,
+      "is_fork": false,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-13T19:44:34Z",
+      "html_url": "https://github.com/torvalds/AudioNoise"
+    },
+    {
+      "name": "ScrollWheel",
+      "description": "Minimalist RP2350 magnetic sensor scroll wheel toy project",
+      "language": "C",
+      "stars": 364,
+      "forks": 12,
+      "is_fork": false,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-12T05:15:44Z",
+      "html_url": "https://github.com/torvalds/ScrollWheel"
+    },
+    {
+      "name": "test-tlb",
+      "description": "Stupid memory latency and TLB tester",
+      "language": "C",
+      "stars": 1041,
+      "forks": 221,
+      "is_fork": false,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-10T06:44:53Z",
+      "html_url": "https://github.com/torvalds/test-tlb"
+    },
+    {
+      "name": "pesconvert",
+      "description": "Brother PES file converter",
+      "language": "C",
+      "stars": 566,
+      "forks": 75,
+      "is_fork": false,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-09T01:28:09Z",
+      "html_url": "https://github.com/torvalds/pesconvert"
+    },
+    {
+      "name": "subsurface-for-dirk",
+      "description": "Do not use - the real upstream is  Subsurface-divelog/subsurface",
+      "language": "C++",
+      "stars": 467,
+      "forks": 66,
+      "is_fork": true,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-05T11:29:49Z",
+      "html_url": "https://github.com/torvalds/subsurface-for-dirk"
+    },
+    {
+      "name": "libdc-for-dirk",
+      "description": "Only use for syncing with Dirk, don't use for anything else",
+      "language": "C",
+      "stars": 396,
+      "forks": 51,
+      "is_fork": true,
+      "archived": false,
+      "visibility": "public",
+      "updated_at": "2026-08-05T11:29:48Z",
+      "html_url": "https://github.com/torvalds/libdc-for-dirk"
+    }
+  ],
+  "exposure_assessment": {
+    "indicator_count": 6,
+    "indicators": [
+      {
+        "type": "public_identity",
+        "severity": "low",
+        "reason": "A public display name is available."
+      },
+      {
+        "type": "organizational_affiliation",
+        "severity": "medium",
+        "reason": "A public company/organization field is available."
+      },
+      {
+        "type": "location_exposure",
+        "severity": "medium",
+        "reason": "A public location field is available."
+      },
+      {
+        "type": "repository_exposure",
+        "severity": "medium",
+        "reason": "12 public repositories were observable."
+      },
+      {
+        "type": "gist_exposure",
+        "severity": "medium",
+        "reason": "1 public code gists were discovered."
+      },
+      {
+        "type": "technology_exposure",
+        "severity": "medium",
+        "reason": "Repository metadata exposes primary programming languages."
+      }
+    ]
+  },
+  "defensive_guidance": [
+    "Review publicly visible profile information.",
+    "Remove unnecessary organizational or location details.",
+    "Review public repositories and gists for accidental sensitive leaks.",
+    "Avoid publishing credentials, tokens, private keys, or secrets.",
+    "Review repository descriptions and metadata for unnecessary exposure.",
+    "Use secret-scanning tools (e.g., Trufflehog, GitGuardian) on commit history."
+  ]
+}
