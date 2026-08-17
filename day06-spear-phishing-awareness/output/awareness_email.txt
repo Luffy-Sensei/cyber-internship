@@ -1,0 +1,77 @@
+========================================================================
+DAY 06 — SPEAR PHISHING AWARENESS SCENARIO
+========================================================================
+
+TARGET PROFILE
+------------------------------------------------------------------------
+Name     : Riya Sharma
+Email    : riya@company.com
+Company  : Sqrock
+Location : Bangalore, India
+
+EMAIL SCENARIO
+------------------------------------------------------------------------
+From    : IT Security <it-security@sqrock.example>
+To      : riya@company.com
+Subject : Action Required: Your Sqrock account will be disabled
+
+From    : IT Security <it-security@sqrock.example>
+To      : riya@company.com
+Subject : Action Required: Your Sqrock account will be disabled
+
+Hi Riya Sharma,
+
+Our security team noticed a login associated with
+Bangalore, India.
+
+Please verify your account within 24 hours to avoid
+temporary account suspension.
+
+[VERIFY ACCOUNT]
+https://lab.internal/awareness-test
+
+Regards,
+IT Security Team
+
+--- AWARENESS TRAINING SCENARIO ---
+
+
+PSYCHOLOGICAL TRIGGERS
+------------------------------------------------------------------------
+- [HIGH] authority: The sender impersonates internal IT Security at Sqrock.
+  Defense: Verify suspicious IT alerts via direct out-of-band communication channels.
+- [HIGH] urgency: Imposes an artificial 24-hour verification deadline to induce pressure.
+  Defense: Pause and evaluate security actions regardless of stated deadlines.
+- [MEDIUM] fear: Threatens account suspension to compromise recipient judgment.
+  Defense: Adhere to standard corporate authentication practices during urgent notices.
+- [MEDIUM] personalization: Leverages recipient metadata including name, employer (Sqrock), and location (Bangalore, India).
+  Defense: Recognize that open-source intelligence (OSINT) allows attackers to customize phishing hooks.
+
+RED FLAGS
+------------------------------------------------------------------------
+- [HIGH] Sender impersonation: The message presents itself as an IT/security communication.
+- [HIGH] Unexpected security notification: An unexpected account-security message should be independently verified.
+- [HIGH] Urgency: A 24-hour deadline encourages rapid action.
+- [MEDIUM] Threat of consequences: Account suspension is presented as the consequence of not complying.
+- [HIGH] Verification request: The recipient is encouraged to follow a supplied verification path.
+- [MEDIUM] Personalized hook: Publicly observable personal information is used to increase credibility.
+
+DEFENSIVE GUIDANCE
+------------------------------------------------------------------------
+- Verify independently: Contact IT/security through an official internal channel rather than using contact information provided by the suspicious message.
+- Do not trust the display name: A familiar-looking sender name does not prove that the message originated from the claimed organization.
+- Avoid unexpected links: Navigate to known official services independently instead of following suspicious verification links.
+- Do not allow urgency to bypass procedure: Security procedures should remain consistent even when a message claims immediate action is required.
+- Report suspicious messages: Forward suspicious messages to the organization's security or phishing-reporting process.
+
+EMAIL AUTHENTICATION
+------------------------------------------------------------------------
+- SPF: Checks whether the sending infrastructure is authorized to send mail for the claimed domain.
+- DKIM: Uses a cryptographic signature to provide domain-level message authentication and integrity information.
+- DMARC: Uses domain policy and alignment checks involving SPF and/or DKIM and provides reporting capabilities.
+
+Note: Email authentication improves protection against domain impersonation but does not eliminate every form of phishing.
+
+========================================================================
+END OF AWARENESS REPORT
+========================================================================

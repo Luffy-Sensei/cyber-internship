@@ -1,0 +1,113 @@
+{
+  "scan_metadata": {
+    "timestamp_utc": "2026-08-17T07:28:45.501011+00:00",
+    "tool": "Day 06 Spear Phishing Awareness Engine",
+    "tool_version": "1.0",
+    "scenario_type": "spear_phishing_awareness",
+    "delivery": "simulation_only"
+  },
+  "target_profile": {
+    "name": "Riya Sharma",
+    "email": "riya@company.com",
+    "company": "Sqrock",
+    "location": "Bangalore, India"
+  },
+  "email_scenario": {
+    "from": "IT Security <it-security@sqrock.example>",
+    "to": "riya@company.com",
+    "subject": "Action Required: Your Sqrock account will be disabled",
+    "body": "From    : IT Security <it-security@sqrock.example>\nTo      : riya@company.com\nSubject : Action Required: Your Sqrock account will be disabled\n\nHi Riya Sharma,\n\nOur security team noticed a login associated with\nBangalore, India.\n\nPlease verify your account within 24 hours to avoid\ntemporary account suspension.\n\n[VERIFY ACCOUNT]\nhttps://lab.internal/awareness-test\n\nRegards,\nIT Security Team\n\n--- AWARENESS TRAINING SCENARIO ---\n"
+  },
+  "psychological_triggers": [
+    {
+      "trigger": "authority",
+      "severity": "high",
+      "reason": "The sender impersonates internal IT Security at Sqrock.",
+      "defense": "Verify suspicious IT alerts via direct out-of-band communication channels."
+    },
+    {
+      "trigger": "urgency",
+      "severity": "high",
+      "reason": "Imposes an artificial 24-hour verification deadline to induce pressure.",
+      "defense": "Pause and evaluate security actions regardless of stated deadlines."
+    },
+    {
+      "trigger": "fear",
+      "severity": "medium",
+      "reason": "Threatens account suspension to compromise recipient judgment.",
+      "defense": "Adhere to standard corporate authentication practices during urgent notices."
+    },
+    {
+      "trigger": "personalization",
+      "severity": "medium",
+      "reason": "Leverages recipient metadata including name, employer (Sqrock), and location (Bangalore, India).",
+      "defense": "Recognize that open-source intelligence (OSINT) allows attackers to customize phishing hooks."
+    }
+  ],
+  "red_flags": [
+    {
+      "indicator": "Sender impersonation",
+      "severity": "high",
+      "reason": "The message presents itself as an IT/security communication."
+    },
+    {
+      "indicator": "Unexpected security notification",
+      "severity": "high",
+      "reason": "An unexpected account-security message should be independently verified."
+    },
+    {
+      "indicator": "Urgency",
+      "severity": "high",
+      "reason": "A 24-hour deadline encourages rapid action."
+    },
+    {
+      "indicator": "Threat of consequences",
+      "severity": "medium",
+      "reason": "Account suspension is presented as the consequence of not complying."
+    },
+    {
+      "indicator": "Verification request",
+      "severity": "high",
+      "reason": "The recipient is encouraged to follow a supplied verification path."
+    },
+    {
+      "indicator": "Personalized hook",
+      "severity": "medium",
+      "reason": "Publicly observable personal information is used to increase credibility."
+    }
+  ],
+  "defensive_guidance": [
+    {
+      "action": "Verify independently",
+      "detail": "Contact IT/security through an official internal channel rather than using contact information provided by the suspicious message."
+    },
+    {
+      "action": "Do not trust the display name",
+      "detail": "A familiar-looking sender name does not prove that the message originated from the claimed organization."
+    },
+    {
+      "action": "Avoid unexpected links",
+      "detail": "Navigate to known official services independently instead of following suspicious verification links."
+    },
+    {
+      "action": "Do not allow urgency to bypass procedure",
+      "detail": "Security procedures should remain consistent even when a message claims immediate action is required."
+    },
+    {
+      "action": "Report suspicious messages",
+      "detail": "Forward suspicious messages to the organization's security or phishing-reporting process."
+    }
+  ],
+  "email_authentication": {
+    "SPF": "Checks whether the sending infrastructure is authorized to send mail for the claimed domain.",
+    "DKIM": "Uses a cryptographic signature to provide domain-level message authentication and integrity information.",
+    "DMARC": "Uses domain policy and alignment checks involving SPF and/or DKIM and provides reporting capabilities.",
+    "defensive_note": "Email authentication improves protection against domain impersonation but does not eliminate every form of phishing."
+  },
+  "statistics": {
+    "psychological_trigger_count": 4,
+    "red_flag_count": 6,
+    "defensive_guidance_count": 5,
+    "authentication_controls": 3
+  }
+}
