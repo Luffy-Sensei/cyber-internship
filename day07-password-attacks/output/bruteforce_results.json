@@ -1,0 +1,116 @@
+{
+  "scan_metadata": {
+    "timestamp_utc": "2026-08-18T12:03:38.938762+00:00",
+    "tool": "Day 07 Authentication Attempt Simulator",
+    "tool_version": "2.0",
+    "simulation_type": "local_authentication_testing",
+    "mode": "rate-limit",
+    "target_endpoint": "http://127.0.0.1:5000/login",
+    "username": "admin",
+    "candidate_count": 6,
+    "tested_candidate_count": 5,
+    "max_attempts": 100,
+    "delay_seconds": 0.1
+  },
+  "results": {
+    "total_attempts": 5,
+    "failed_attempts": 4,
+    "successful_attempts": 0,
+    "rate_limited_attempts": 1,
+    "request_errors": 0,
+    "unexpected_responses": 0,
+    "rate_limit_detected": true
+  },
+  "rate_limit_detection": {
+    "detected": true,
+    "first_trigger_attempt": 5,
+    "http_status": 429,
+    "retry_after_seconds": 30
+  },
+  "attempts": [
+    {
+      "timestamp_utc": "2026-08-18T12:03:38.427528+00:00",
+      "status_code": 401,
+      "result": "invalid_credentials",
+      "success": false,
+      "server_response": {
+        "attempt_count": 1,
+        "error": "invalid_credentials",
+        "message": "Invalid username or password.",
+        "remaining_before_lockout": 4,
+        "success": false,
+        "timestamp_utc": "2026-08-18T12:03:38.438085+00:00"
+      },
+      "attempt_number": 1
+    },
+    {
+      "timestamp_utc": "2026-08-18T12:03:38.552606+00:00",
+      "status_code": 401,
+      "result": "invalid_credentials",
+      "success": false,
+      "server_response": {
+        "attempt_count": 2,
+        "error": "invalid_credentials",
+        "message": "Invalid username or password.",
+        "remaining_before_lockout": 3,
+        "success": false,
+        "timestamp_utc": "2026-08-18T12:03:38.558159+00:00"
+      },
+      "attempt_number": 2
+    },
+    {
+      "timestamp_utc": "2026-08-18T12:03:38.664788+00:00",
+      "status_code": 401,
+      "result": "invalid_credentials",
+      "success": false,
+      "server_response": {
+        "attempt_count": 3,
+        "error": "invalid_credentials",
+        "message": "Invalid username or password.",
+        "remaining_before_lockout": 2,
+        "success": false,
+        "timestamp_utc": "2026-08-18T12:03:38.675409+00:00"
+      },
+      "attempt_number": 3
+    },
+    {
+      "timestamp_utc": "2026-08-18T12:03:38.781750+00:00",
+      "status_code": 401,
+      "result": "invalid_credentials",
+      "success": false,
+      "server_response": {
+        "attempt_count": 4,
+        "error": "invalid_credentials",
+        "message": "Invalid username or password.",
+        "remaining_before_lockout": 1,
+        "success": false,
+        "timestamp_utc": "2026-08-18T12:03:38.789989+00:00"
+      },
+      "attempt_number": 4
+    },
+    {
+      "timestamp_utc": "2026-08-18T12:03:38.928748+00:00",
+      "status_code": 429,
+      "result": "rate_limited",
+      "success": false,
+      "server_response": {
+        "attempt_count": 5,
+        "error": "rate_limited",
+        "message": "Too many failed authentication attempts.",
+        "retry_after_seconds": 30,
+        "success": false,
+        "timestamp_utc": "2026-08-18T12:03:38.932064+00:00"
+      },
+      "attempt_number": 5
+    }
+  ],
+  "defensive_observations": [
+    "Repeated failed authentication attempts are observable at the application layer.",
+    "HTTP 429 provides evidence that a rate-limit control was triggered.",
+    "Rate limiting can reduce the number of authentication attempts available to an attacker.",
+    "Authentication success should be determined using application-level semantics rather than HTTP status alone.",
+    "Automatic redirects are disabled so that the simulator remains scoped to the supplied endpoint.",
+    "Controlled delays reduce unnecessary load during authorized testing.",
+    "MFA provides an additional protection layer when password-based authentication is compromised."
+  ]
+}

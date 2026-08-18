@@ -1,0 +1,54 @@
+======================================================================
+DAY 07 — AUTHENTICATION ATTEMPT SIMULATION
+======================================================================
+
+SIMULATION METADATA
+----------------------------------------------------------------------
+Generated UTC       : 2026-08-18T12:03:38.938762+00:00
+Tool version        : 2.0
+Mode                : rate-limit
+Endpoint            : http://127.0.0.1:5000/login
+Username            : admin
+Candidates          : 6
+Tested candidates   : 5
+Maximum attempts    : 100
+Delay               : 0.1 seconds
+
+RESULTS
+----------------------------------------------------------------------
+Total attempts       : 5
+Failed attempts      : 4
+Successful attempts  : 0
+Rate-limited attempts: 1
+Request errors       : 0
+Unexpected responses : 0
+Rate limit detected  : True
+
+RATE-LIMIT DETECTION
+----------------------------------------------------------------------
+Detected             : True
+First trigger attempt: 5
+HTTP status          : 429
+Retry-after seconds  : 30
+
+ATTEMPT LOG
+----------------------------------------------------------------------
+#1 | HTTP 401 | invalid_credentials | 2026-08-18T12:03:38.427528+00:00
+#2 | HTTP 401 | invalid_credentials | 2026-08-18T12:03:38.552606+00:00
+#3 | HTTP 401 | invalid_credentials | 2026-08-18T12:03:38.664788+00:00
+#4 | HTTP 401 | invalid_credentials | 2026-08-18T12:03:38.781750+00:00
+#5 | HTTP 429 | rate_limited | 2026-08-18T12:03:38.928748+00:00
+
+DEFENSIVE OBSERVATIONS
+----------------------------------------------------------------------
+- Repeated failed authentication attempts are observable at the application layer.
+- HTTP 429 provides evidence that a rate-limit control was triggered.
+- Rate limiting can reduce the number of authentication attempts available to an attacker.
+- Authentication success should be determined using application-level semantics rather than HTTP status alone.
+- Automatic redirects are disabled so that the simulator remains scoped to the supplied endpoint.
+- Controlled delays reduce unnecessary load during authorized testing.
+- MFA provides an additional protection layer when password-based authentication is compromised.
+
+======================================================================
+END OF REPORT
+======================================================================
