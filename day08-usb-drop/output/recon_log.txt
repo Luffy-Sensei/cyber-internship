@@ -1,0 +1,6 @@
+timestamp: 2026-08-19T03:31:20.302300-04:00
+hostname: parrot
+os: Linux
+version: #1 SMP PREEMPT_DYNAMIC Parrot 7.0.13-1parrot1 (2026-07-12)
+user: luffy
+cwd: /home/luffy/cyber-internship/day08-usb-drop
