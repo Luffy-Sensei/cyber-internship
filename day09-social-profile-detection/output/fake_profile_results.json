@@ -1,0 +1,266 @@
+{
+  "metadata": {
+    "generated_utc": "2026-08-20T06:07:10.506117+00:00",
+    "tool": "Day 09 Fake Profile & Bot Detector",
+    "version": "1.0",
+    "analysis_type": "rule_based_heuristic_analysis",
+    "platform": "twitter",
+    "profile_count": 4
+  },
+  "summary": {
+    "total_profiles": 4,
+    "high_risk_profiles": 3,
+    "low_or_medium_risk_profiles": 1
+  },
+  "results": [
+    {
+      "username": "realsara",
+      "platform": "twitter",
+      "score": 0,
+      "risk_level": "LOW",
+      "flagged_as_high_risk": false,
+      "finding_count": 0,
+      "score_breakdown": {
+        "account_age": 0,
+        "following_ratio": 0,
+        "profile_picture": 0,
+        "low_posts": 0,
+        "default_bio": 0,
+        "default_name": 0,
+        "low_engagement": 0,
+        "high_follower_growth": 0
+      },
+      "findings": []
+    },
+    {
+      "username": "botty_mcbotface",
+      "platform": "twitter",
+      "score": 100,
+      "risk_level": "CRITICAL",
+      "flagged_as_high_risk": true,
+      "finding_count": 14,
+      "score_breakdown": {
+        "account_age": 30,
+        "following_ratio": 25,
+        "profile_picture": 20,
+        "low_posts": 15,
+        "default_bio": 10,
+        "default_name": 10,
+        "low_engagement": 15,
+        "high_follower_growth": 0,
+        "inconsistent_posting": 12,
+        "language_inconsistency": 10,
+        "high_hashtag_ratio": 10,
+        "high_mention_ratio": 8,
+        "high_reply_ratio": 12,
+        "no_original_content": 15,
+        "copy_paste_pattern": 20
+      },
+      "findings": [
+        {
+          "type": "account_age",
+          "points": 30,
+          "description": "Account is less than 7 days old."
+        },
+        {
+          "type": "following_ratio",
+          "points": 25,
+          "description": "Extreme following/follower ratio: 450.0:1."
+        },
+        {
+          "type": "profile_picture",
+          "points": 20,
+          "description": "No profile picture is configured."
+        },
+        {
+          "type": "low_posts",
+          "points": 15,
+          "description": "Very low post count: 1."
+        },
+        {
+          "type": "default_bio",
+          "points": 10,
+          "description": "Default or generic bio indicator detected."
+        },
+        {
+          "type": "default_name",
+          "points": 10,
+          "description": "Default or generic display name detected."
+        },
+        {
+          "type": "low_engagement",
+          "points": 15,
+          "description": "Very low engagement rate: 0.0%."
+        },
+        {
+          "type": "inconsistent_posting",
+          "points": 12,
+          "description": "Inconsistent posting pattern detected."
+        },
+        {
+          "type": "language_inconsistency",
+          "points": 10,
+          "description": "Inconsistent language usage detected."
+        },
+        {
+          "type": "high_hashtag_ratio",
+          "points": 10,
+          "description": "High hashtag ratio detected: 90%."
+        },
+        {
+          "type": "high_mention_ratio",
+          "points": 8,
+          "description": "High mention ratio detected: 80%."
+        },
+        {
+          "type": "high_reply_ratio",
+          "points": 12,
+          "description": "Very high reply ratio detected: 90%."
+        },
+        {
+          "type": "no_original_content",
+          "points": 15,
+          "description": "Profile contains no original-content indicator."
+        },
+        {
+          "type": "copy_paste_pattern",
+          "points": 20,
+          "description": "Repeated copy-paste behavior detected."
+        }
+      ]
+    },
+    {
+      "username": "crypto_lover",
+      "platform": "twitter",
+      "score": 77,
+      "risk_level": "CRITICAL",
+      "flagged_as_high_risk": true,
+      "finding_count": 6,
+      "score_breakdown": {
+        "account_age": 20,
+        "following_ratio": 5,
+        "profile_picture": 20,
+        "low_posts": 0,
+        "default_bio": 0,
+        "default_name": 0,
+        "low_engagement": 0,
+        "high_follower_growth": 10,
+        "inconsistent_posting": 12,
+        "high_hashtag_ratio": 10
+      },
+      "findings": [
+        {
+          "type": "account_age",
+          "points": 20,
+          "description": "Account is less than 30 days old."
+        },
+        {
+          "type": "following_ratio",
+          "points": 5,
+          "description": "Elevated following/follower ratio: 8.0:1."
+        },
+        {
+          "type": "profile_picture",
+          "points": 20,
+          "description": "No profile picture is configured."
+        },
+        {
+          "type": "high_follower_growth",
+          "points": 10,
+          "description": "High follower growth: 85.0% per day."
+        },
+        {
+          "type": "inconsistent_posting",
+          "points": 12,
+          "description": "Inconsistent posting pattern detected."
+        },
+        {
+          "type": "high_hashtag_ratio",
+          "points": 10,
+          "description": "High hashtag ratio detected: 70%."
+        }
+      ]
+    },
+    {
+      "username": "sara_johnson_official",
+      "platform": "twitter",
+      "score": 100,
+      "risk_level": "CRITICAL",
+      "flagged_as_high_risk": true,
+      "finding_count": 10,
+      "score_breakdown": {
+        "account_age": 20,
+        "following_ratio": 20,
+        "profile_picture": 20,
+        "low_posts": 8,
+        "default_bio": 10,
+        "default_name": 0,
+        "low_engagement": 15,
+        "high_follower_growth": 10,
+        "inconsistent_posting": 12,
+        "no_original_content": 15,
+        "impersonation_signal": 20
+      },
+      "findings": [
+        {
+          "type": "account_age",
+          "points": 20,
+          "description": "Account is less than 30 days old."
+        },
+        {
+          "type": "following_ratio",
+          "points": 20,
+          "description": "Very high following/follower ratio: 33.3:1."
+        },
+        {
+          "type": "profile_picture",
+          "points": 20,
+          "description": "No profile picture is configured."
+        },
+        {
+          "type": "low_posts",
+          "points": 8,
+          "description": "Low post count: 4."
+        },
+        {
+          "type": "default_bio",
+          "points": 10,
+          "description": "Default or generic bio indicator detected."
+        },
+        {
+          "type": "low_engagement",
+          "points": 15,
+          "description": "Very low engagement rate: 0.2%."
+        },
+        {
+          "type": "high_follower_growth",
+          "points": 10,
+          "description": "High follower growth: 65.0% per day."
+        },
+        {
+          "type": "inconsistent_posting",
+          "points": 12,
+          "description": "Inconsistent posting pattern detected."
+        },
+        {
+          "type": "no_original_content",
+          "points": 15,
+          "description": "Profile contains no original-content indicator."
+        },
+        {
+          "type": "impersonation_signal",
+          "points": 20,
+          "description": "Potential impersonation indicator detected."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The score is a risk indicator, not proof that an account is fake.",
+    "Individual heuristics can produce false positives.",
+    "Legitimate new accounts may appear suspicious because of account age.",
+    "Legitimate users may have unusual follower/following ratios.",
+    "No social-media platform API or external account data is accessed.",
+    "Human verification and additional evidence are required before concluding impersonation or bot activity."
+  ]
+}
