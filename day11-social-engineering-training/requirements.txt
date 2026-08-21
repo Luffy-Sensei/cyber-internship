@@ -1,0 +1,2 @@
+# Day 11 uses Python standard-library modules only.
+# No third-party packages are required.

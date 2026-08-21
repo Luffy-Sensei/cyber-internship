@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "category": "Phishing",
+    "difficulty": "Beginner",
+    "question": "You receive an email claiming your account will be disabled unless you verify your password through a link. What should you do?",
+    "options": {
+      "A": "Click the link and verify immediately",
+      "B": "Contact the organization through an official channel and verify the request",
+      "C": "Reply to the email with your password"
+    },
+    "answer": "B",
+    "explanation": "Urgency and requests for credentials are common phishing indicators. Verify unexpected requests through an official channel instead of using links or contact information supplied by the suspicious message."
+  },
+  {
+    "id": 2,
+    "category": "Baiting",
+    "difficulty": "Beginner",
+    "question": "You find an unknown USB drive in a parking lot. What is the safest action?",
+    "options": {
+      "A": "Plug it into your computer to identify its owner",
+      "B": "Give it to security or the appropriate IT department without connecting it",
+      "C": "Take it home and test it on your personal computer"
+    },
+    "answer": "B",
+    "explanation": "Unknown USB devices can be used as baiting mechanisms. Do not connect an unknown device to a computer."
+  },
+  {
+    "id": 3,
+    "category": "Pretexting",
+    "difficulty": "Intermediate",
+    "question": "Someone calls claiming to be from IT and asks for your password to fix an urgent account problem. What should you do?",
+    "options": {
+      "A": "Provide the password because they say they are from IT",
+      "B": "Ask for their personal phone number and send the password later",
+      "C": "Refuse to provide the password and verify the request through an official IT channel"
+    },
+    "answer": "C",
+    "explanation": "A legitimate support process should not require you to disclose your password. Verify unexpected support requests independently."
+  },
+  {
+    "id": 4,
+    "category": "Impersonation",
+    "difficulty": "Intermediate",
+    "question": "Your manager sends a message asking you to urgently purchase gift cards and send the codes. What should you do first?",
+    "options": {
+      "A": "Complete the request immediately because it appears to come from your manager",
+      "B": "Verify the request using a trusted communication method",
+      "C": "Send only half the requested amount"
+    },
+    "answer": "B",
+    "explanation": "Attackers may impersonate executives or coworkers and create urgency. Independently verify unusual financial requests before taking action."
+  },
+  {
+    "id": 5,
+    "category": "MFA Abuse",
+    "difficulty": "Intermediate",
+    "question": "You suddenly receive several MFA approval requests that you did not initiate. What should you do?",
+    "options": {
+      "A": "Approve one request so the notifications stop",
+      "B": "Ignore all notifications permanently",
+      "C": "Deny the unexpected requests and report the activity through the appropriate security channel"
+    },
+    "answer": "C",
+    "explanation": "Unexpected MFA prompts may indicate an attempted account compromise. Do not approve requests you did not initiate."
+  },
+  {
+    "id": 6,
+    "category": "Phishing",
+    "difficulty": "Intermediate",
+    "question": "A message contains a link to a cloud-storage login page. The sender appears familiar, but the URL looks unusual. What should you do?",
+    "options": {
+      "A": "Enter your credentials because you recognize the sender",
+      "B": "Verify the message and access the service through its known official website or application",
+      "C": "Forward the link to coworkers to ask whether it works"
+    },
+    "answer": "B",
+    "explanation": "A familiar sender does not guarantee a message is safe. Suspicious URLs should be treated cautiously and verified independently."
+  },
+  {
+    "id": 7,
+    "category": "Physical Security",
+    "difficulty": "Beginner",
+    "question": "A stranger follows you closely through a secure office entrance without using their own access credential. What should you do?",
+    "options": {
+      "A": "Hold the door open because they appear to work there",
+      "B": "Ignore it because someone else will notice",
+      "C": "Follow the organization's access-control procedure and report the situation if appropriate"
+    },
+    "answer": "C",
+    "explanation": "Tailgating can allow unauthorized people into restricted areas. Follow the organization's physical-security procedures rather than assuming the person is authorized."
+  },
+  {
+    "id": 8,
+    "category": "Social Media",
+    "difficulty": "Intermediate",
+    "question": "A newly created social-media account using a coworker's name sends you a private message requesting internal information. What should you do?",
+    "options": {
+      "A": "Send the information because the name matches your coworker's",
+      "B": "Verify the person's identity through a trusted channel before sharing anything",
+      "C": "Ask the account for more personal information and then send the data"
+    },
+    "answer": "B",
+    "explanation": "Attackers can create impersonation accounts to build trust. Verify identity independently before sharing sensitive or internal information."
+  },
+  {
+    "id": 9,
+    "category": "QR Phishing",
+    "difficulty": "Intermediate",
+    "question": "You receive a QR code claiming that you must scan it to prevent your account from being locked. What is the safest response?",
+    "options": {
+      "A": "Scan it immediately because the message says it is urgent",
+      "B": "Verify the request independently and avoid scanning an untrusted QR code",
+      "C": "Scan it and enter your password if requested"
+    },
+    "answer": "B",
+    "explanation": "QR codes can redirect users to phishing pages. Urgency combined with a request to authenticate is a strong reason to verify the request independently."
+  },
+  {
+    "id": 10,
+    "category": "Email Attachments",
+    "difficulty": "Beginner",
+    "question": "An unexpected email attachment arrives from someone you do not recognize. What should you do?",
+    "options": {
+      "A": "Open it to determine what it contains",
+      "B": "Download it and scan it after opening",
+      "C": "Do not open it and report or verify it according to organizational procedures"
+    },
+    "answer": "C",
+    "explanation": "Unexpected attachments can be malicious. Avoid opening suspicious files and use the organization's reporting or verification process."
+  }
+]

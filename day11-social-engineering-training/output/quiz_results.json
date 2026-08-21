@@ -1,0 +1,90 @@
+{
+    "timestamp": "2026-08-21T07:09:53.548120+00:00",
+    "total_questions": 10,
+    "correct_answers": 7,
+    "incorrect_answers": 3,
+    "score_percentage": 70.0,
+    "awareness_level": "Good",
+    "answers": [
+        {
+            "question_id": 1,
+            "category": "Phishing",
+            "difficulty": "Beginner",
+            "selected_answer": "B",
+            "correct_answer": "B",
+            "correct": true
+        },
+        {
+            "question_id": 2,
+            "category": "Baiting",
+            "difficulty": "Beginner",
+            "selected_answer": "B",
+            "correct_answer": "B",
+            "correct": true
+        },
+        {
+            "question_id": 3,
+            "category": "Pretexting",
+            "difficulty": "Intermediate",
+            "selected_answer": "C",
+            "correct_answer": "C",
+            "correct": true
+        },
+        {
+            "question_id": 4,
+            "category": "Impersonation",
+            "difficulty": "Intermediate",
+            "selected_answer": "B",
+            "correct_answer": "B",
+            "correct": true
+        },
+        {
+            "question_id": 5,
+            "category": "MFA Abuse",
+            "difficulty": "Intermediate",
+            "selected_answer": "C",
+            "correct_answer": "C",
+            "correct": true
+        },
+        {
+            "question_id": 6,
+            "category": "Phishing",
+            "difficulty": "Intermediate",
+            "selected_answer": "B",
+            "correct_answer": "B",
+            "correct": true
+        },
+        {
+            "question_id": 7,
+            "category": "Physical Security",
+            "difficulty": "Beginner",
+            "selected_answer": "C",
+            "correct_answer": "C",
+            "correct": true
+        },
+        {
+            "question_id": 8,
+            "category": "Social Media",
+            "difficulty": "Intermediate",
+            "selected_answer": "A",
+            "correct_answer": "B",
+            "correct": false
+        },
+        {
+            "question_id": 9,
+            "category": "QR Phishing",
+            "difficulty": "Intermediate",
+            "selected_answer": "A",
+            "correct_answer": "B",
+            "correct": false
+        },
+        {
+            "question_id": 10,
+            "category": "Email Attachments",
+            "difficulty": "Beginner",
+            "selected_answer": "B",
+            "correct_answer": "C",
+            "correct": false
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+DAY 11 — SOCIAL ENGINEERING AWARENESS TRAINING
+============================================================
+
+Timestamp          : 2026-08-21T07:09:53.548120+00:00
+Total Questions    : 10
+Correct Answers    : 7
+Incorrect Answers  : 3
+Score              : 70.0%
+Awareness Level    : Good
+
+QUESTION RESULTS
+------------------------------------------------------------
+
+Question 1
+Category           : Phishing
+Difficulty         : Beginner
+Selected Answer    : B
+Correct Answer     : B
+Result             : CORRECT
+
+Question 2
+Category           : Baiting
+Difficulty         : Beginner
+Selected Answer    : B
+Correct Answer     : B
+Result             : CORRECT
+
+Question 3
+Category           : Pretexting
+Difficulty         : Intermediate
+Selected Answer    : C
+Correct Answer     : C
+Result             : CORRECT
+
+Question 4
+Category           : Impersonation
+Difficulty         : Intermediate
+Selected Answer    : B
+Correct Answer     : B
+Result             : CORRECT
+
+Question 5
+Category           : MFA Abuse
+Difficulty         : Intermediate
+Selected Answer    : C
+Correct Answer     : C
+Result             : CORRECT
+
+Question 6
+Category           : Phishing
+Difficulty         : Intermediate
+Selected Answer    : B
+Correct Answer     : B
+Result             : CORRECT
+
+Question 7
+Category           : Physical Security
+Difficulty         : Beginner
+Selected Answer    : C
+Correct Answer     : C
+Result             : CORRECT
+
+Question 8
+Category           : Social Media
+Difficulty         : Intermediate
+Selected Answer    : A
+Correct Answer     : B
+Result             : INCORRECT
+
+Question 9
+Category           : QR Phishing
+Difficulty         : Intermediate
+Selected Answer    : A
+Correct Answer     : B
+Result             : INCORRECT
+
+Question 10
+Category           : Email Attachments
+Difficulty         : Beginner
+Selected Answer    : B
+Correct Answer     : C
+Result             : INCORRECT
+
+============================================================
+Training complete.
