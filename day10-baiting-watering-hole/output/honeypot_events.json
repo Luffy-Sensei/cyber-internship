@@ -1,0 +1,34 @@
+[
+    {
+        "timestamp": "2026-08-21T06:23:02.721947+00:00",
+        "ip": "127.0.0.1",
+        "method": "GET",
+        "path": "/",
+        "user_agent": "curl/8.14.1",
+        "bait_triggered": false
+    },
+    {
+        "timestamp": "2026-08-21T06:23:14.872601+00:00",
+        "ip": "127.0.0.1",
+        "method": "GET",
+        "path": "/free-download",
+        "user_agent": "curl/8.14.1",
+        "bait_triggered": true
+    },
+    {
+        "timestamp": "2026-08-21T06:23:27.185180+00:00",
+        "ip": "127.0.0.1",
+        "method": "GET",
+        "path": "/software-update",
+        "user_agent": "curl/8.14.1",
+        "bait_triggered": true
+    },
+    {
+        "timestamp": "2026-08-21T06:23:35.288897+00:00",
+        "ip": "127.0.0.1",
+        "method": "GET",
+        "path": "/bait",
+        "user_agent": "curl/8.14.1",
+        "bait_triggered": true
+    }
+]
