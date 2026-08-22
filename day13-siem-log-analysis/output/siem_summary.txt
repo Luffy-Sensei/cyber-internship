@@ -1,0 +1,99 @@
+DAY 13 — SIEM LOG ANALYSIS v2
+========================================================================
+
+Tool version     : 2.0.0
+Input file       : input/security.log
+Analysis time    : 2026-08-22T07:53:55.209584+00:00
+
+CONFIGURATION
+------------------------------------------------------------------------
+Failed threshold : 3
+Unusual window   : 00:00-05:00
+Correlation      : 5 minutes
+
+STATISTICS
+------------------------------------------------------------------------
+Total events     : 7
+Malformed lines  : 0
+Total alerts     : 5
+
+EVENT TYPES
+------------------------------------------------------------------------
+EMAIL_RULE_CREATED             1
+FAILED_LOGIN                   3
+SUCCESS_LOGIN                  3
+
+ALERT SEVERITY
+------------------------------------------------------------------------
+CRITICAL                       1
+HIGH                           2
+MEDIUM                         2
+
+DETECTION RULES
+------------------------------------------------------------------------
+AUTH-001                       1
+AUTH-002                       1
+AUTH-003                       1
+AUTH-004                       1
+MAIL-001                       1
+
+ALERT DETAILS
+------------------------------------------------------------------------
+
+[1] CRITICAL — AUTH-002
+Title       : Successful login following repeated failures
+Timestamp   : 2026-08-21T02:34:18+00:00
+User        : admin
+IP          : 45.33.32.156
+Description : User 'admin' successfully logged in after 3 failed authentication attempts within 5 minutes.
+Evidence:
+- 2026-08-21 02:34:12 FAILED_LOGIN user=admin ip=45.33.32.156
+- 2026-08-21 02:34:14 FAILED_LOGIN user=admin ip=45.33.32.156
+- 2026-08-21 02:34:16 FAILED_LOGIN user=admin ip=45.33.32.156
+- 2026-08-21 02:34:18 SUCCESS_LOGIN user=admin ip=45.33.32.156
+
+[2] HIGH — AUTH-001
+Title       : Repeated failed authentication attempts
+Timestamp   : 2026-08-21T02:34:16+00:00
+User        : admin
+IP          : N/A
+Description : User 'admin' generated 3 failed login attempts, meeting or exceeding the configured threshold of 3.
+Evidence:
+- 2026-08-21 02:34:12 FAILED_LOGIN user=admin ip=45.33.32.156
+- 2026-08-21 02:34:14 FAILED_LOGIN user=admin ip=45.33.32.156
+- 2026-08-21 02:34:16 FAILED_LOGIN user=admin ip=45.33.32.156
+
+[3] HIGH — MAIL-001
+Title       : Suspicious email forwarding rule created
+Timestamp   : 2026-08-21T02:35:00+00:00
+User        : admin
+IP          : N/A
+Description : User 'admin' created the potentially suspicious email rule 'forward_all'.
+Evidence:
+- 2026-08-21 02:35:00 EMAIL_RULE_CREATED user=admin rule=forward_all
+
+[4] MEDIUM — AUTH-003
+Title       : Authentication during unusual hours
+Timestamp   : 2026-08-21T02:34:12+00:00
+User        : admin
+IP          : 45.33.32.156
+Description : Authentication activity for user 'admin' occurred during the configured unusual-hour window (00:00-05:00).
+Evidence:
+- 2026-08-21 02:34:12 FAILED_LOGIN user=admin ip=45.33.32.156
+- 2026-08-21 02:34:14 FAILED_LOGIN user=admin ip=45.33.32.156
+- 2026-08-21 02:34:16 FAILED_LOGIN user=admin ip=45.33.32.156
+- 2026-08-21 02:34:18 SUCCESS_LOGIN user=admin ip=45.33.32.156
+
+[5] MEDIUM — AUTH-004
+Title       : Multiple source IPs observed for user
+Timestamp   : 2026-08-21T14:20:00+00:00
+User        : admin
+IP          : N/A
+Description : User 'admin' authenticated from 2 different source IP addresses.
+Evidence:
+- 10.10.20.15
+- 45.33.32.156
+
+========================================================================
+NOTE: Alerts are detection signals and require analyst validation.
+========================================================================

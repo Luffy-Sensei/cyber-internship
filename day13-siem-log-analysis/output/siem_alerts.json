@@ -1,0 +1,109 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "tool": "Day 13 SIEM Log Analyzer",
+    "version": "2.0.0",
+    "input_file": "input/security.log",
+    "analysis_timestamp_utc": "2026-08-22T07:53:55.209584+00:00"
+  },
+  "configuration": {
+    "failed_threshold": 3,
+    "unusual_start": 0,
+    "unusual_end": 5,
+    "correlation_minutes": 5
+  },
+  "statistics": {
+    "total_events": 7,
+    "malformed_lines": 0,
+    "total_alerts": 5,
+    "event_types": {
+      "EMAIL_RULE_CREATED": 1,
+      "FAILED_LOGIN": 3,
+      "SUCCESS_LOGIN": 3
+    },
+    "severity_counts": {
+      "CRITICAL": 1,
+      "HIGH": 2,
+      "MEDIUM": 2
+    },
+    "rule_counts": {
+      "AUTH-001": 1,
+      "AUTH-002": 1,
+      "AUTH-003": 1,
+      "AUTH-004": 1,
+      "MAIL-001": 1
+    }
+  },
+  "malformed_lines": [],
+  "alerts": [
+    {
+      "timestamp": "2026-08-21T02:34:18+00:00",
+      "severity": "CRITICAL",
+      "rule_id": "AUTH-002",
+      "title": "Successful login following repeated failures",
+      "description": "User 'admin' successfully logged in after 3 failed authentication attempts within 5 minutes.",
+      "user": "admin",
+      "ip": "45.33.32.156",
+      "evidence": [
+        "2026-08-21 02:34:12 FAILED_LOGIN user=admin ip=45.33.32.156",
+        "2026-08-21 02:34:14 FAILED_LOGIN user=admin ip=45.33.32.156",
+        "2026-08-21 02:34:16 FAILED_LOGIN user=admin ip=45.33.32.156",
+        "2026-08-21 02:34:18 SUCCESS_LOGIN user=admin ip=45.33.32.156"
+      ]
+    },
+    {
+      "timestamp": "2026-08-21T02:34:16+00:00",
+      "severity": "HIGH",
+      "rule_id": "AUTH-001",
+      "title": "Repeated failed authentication attempts",
+      "description": "User 'admin' generated 3 failed login attempts, meeting or exceeding the configured threshold of 3.",
+      "user": "admin",
+      "ip": null,
+      "evidence": [
+        "2026-08-21 02:34:12 FAILED_LOGIN user=admin ip=45.33.32.156",
+        "2026-08-21 02:34:14 FAILED_LOGIN user=admin ip=45.33.32.156",
+        "2026-08-21 02:34:16 FAILED_LOGIN user=admin ip=45.33.32.156"
+      ]
+    },
+    {
+      "timestamp": "2026-08-21T02:35:00+00:00",
+      "severity": "HIGH",
+      "rule_id": "MAIL-001",
+      "title": "Suspicious email forwarding rule created",
+      "description": "User 'admin' created the potentially suspicious email rule 'forward_all'.",
+      "user": "admin",
+      "ip": null,
+      "evidence": [
+        "2026-08-21 02:35:00 EMAIL_RULE_CREATED user=admin rule=forward_all"
+      ]
+    },
+    {
+      "timestamp": "2026-08-21T02:34:12+00:00",
+      "severity": "MEDIUM",
+      "rule_id": "AUTH-003",
+      "title": "Authentication during unusual hours",
+      "description": "Authentication activity for user 'admin' occurred during the configured unusual-hour window (00:00-05:00).",
+      "user": "admin",
+      "ip": "45.33.32.156",
+      "evidence": [
+        "2026-08-21 02:34:12 FAILED_LOGIN user=admin ip=45.33.32.156",
+        "2026-08-21 02:34:14 FAILED_LOGIN user=admin ip=45.33.32.156",
+        "2026-08-21 02:34:16 FAILED_LOGIN user=admin ip=45.33.32.156",
+        "2026-08-21 02:34:18 SUCCESS_LOGIN user=admin ip=45.33.32.156"
+      ]
+    },
+    {
+      "timestamp": "2026-08-21T14:20:00+00:00",
+      "severity": "MEDIUM",
+      "rule_id": "AUTH-004",
+      "title": "Multiple source IPs observed for user",
+      "description": "User 'admin' authenticated from 2 different source IP addresses.",
+      "user": "admin",
+      "ip": null,
+      "evidence": [
+        "10.10.20.15",
+        "45.33.32.156"
+      ]
+    }
+  ]
+}
