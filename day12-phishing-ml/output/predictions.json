@@ -1,0 +1,38 @@
+{
+  "generated_utc": "2026-08-22T05:15:15.669251+00:00",
+  "model": "TfidfVectorizer + MultinomialNB",
+  "predictions": [
+    {
+      "text": "Urgent security alert: verify your PayPal password immediately using the secure link.",
+      "prediction": "PHISHING",
+      "label": 1,
+      "confidence": 0.9808,
+      "phishing_probability": 0.9808,
+      "legitimate_probability": 0.0192
+    },
+    {
+      "text": "Hi team, the project meeting is confirmed for Tuesday at 3 PM. The agenda is attached.",
+      "prediction": "LEGIT",
+      "label": 0,
+      "confidence": 0.971,
+      "phishing_probability": 0.029,
+      "legitimate_probability": 0.971
+    },
+    {
+      "text": "Your bank account will be suspended today unless you confirm your payment details.",
+      "prediction": "PHISHING",
+      "label": 1,
+      "confidence": 0.9947,
+      "phishing_probability": 0.9947,
+      "legitimate_probability": 0.0053
+    },
+    {
+      "text": "Please review the quarterly budget document before tomorrow's planning meeting.",
+      "prediction": "LEGIT",
+      "label": 0,
+      "confidence": 0.9642,
+      "phishing_probability": 0.0358,
+      "legitimate_probability": 0.9642
+    }
+  ]
+}
