@@ -1,0 +1,77 @@
+DAY 14 — SE INCIDENT RESPONSE AUTOMATION
+========================================================================
+
+MODE
+------------------------------------------------------------------------
+SIMULATION ONLY
+
+INCIDENT
+------------------------------------------------------------------------
+Incident ID : SE-2026-001
+Type        : phishing
+Severity    : HIGH
+User        : training-user@sqrock.com
+Source      : Day 13 SIEM alert
+Description : Potential phishing activity associated with the affected user.
+
+RESPONSE ACTIONS
+------------------------------------------------------------------------
+[1] CON-001 — Containment
+Action     : Lock affected user account
+Status     : SIMULATED
+Simulation : True
+Reason     : High or critical severity requires account containment.
+
+[2] CON-002 — Containment
+Action     : Revoke active sessions
+Status     : SIMULATED
+Simulation : True
+Reason     : Limit the possibility of continued unauthorized access.
+
+[3] COM-001 — Communication
+Action     : Notify SOC team
+Status     : SIMULATED
+Simulation : True
+Reason     : Security operations should be informed of significant incidents.
+
+[4] FOR-001 — Forensics
+Action     : Preserve relevant mail and authentication logs
+Status     : SIMULATED
+Simulation : True
+Reason     : Preserve evidence before investigation and remediation.
+
+[5] PHI-001 — Containment
+Action     : Quarantine suspected phishing message
+Status     : SIMULATED
+Simulation : True
+Reason     : Prevent additional interaction with the suspected message.
+
+[6] PHI-002 — Containment
+Action     : Block or review the sender domain
+Status     : SIMULATED
+Simulation : True
+Reason     : Reduce the chance of repeated phishing delivery.
+
+[7] PHI-003 — Forensics
+Action     : Perform attachment and URL analysis in an isolated sandbox
+Status     : SIMULATED
+Simulation : True
+Reason     : Identify potentially malicious content safely.
+
+[8] DOC-001 — Documentation
+Action     : Record incident timeline and response decisions
+Status     : SIMULATED
+Simulation : True
+Reason     : Maintain an auditable incident record.
+
+[9] LL-001 — Lessons Learned
+Action     : Record follow-up actions and preventive recommendations
+Status     : SIMULATED
+Simulation : True
+Reason     : Support post-incident improvement.
+
+========================================================================
+NOTE: This report documents simulated defensive response actions.
+No accounts, sessions, mailboxes, domains, or security controls
+were actually modified by this tool.
+========================================================================

@@ -1,0 +1,8 @@
+{
+  "incident_id": "SE-2026-001",
+  "type": "phishing",
+  "severity": "HIGH",
+  "user": "training-user@sqrock.com",
+  "source": "Day 13 SIEM alert",
+  "description": "Potential phishing activity associated with the affected user."
+}

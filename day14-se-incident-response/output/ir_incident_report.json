@@ -1,0 +1,94 @@
+{
+  "metadata": {
+    "tool": "Day 14 SE Incident Response Automation",
+    "version": "1.0.0",
+    "generated_utc": "2026-08-23T05:47:49.288824+00:00",
+    "mode": "simulation",
+    "warning": "No real security controls were modified. All response actions are simulated."
+  },
+  "incident": {
+    "incident_id": "SE-2026-001",
+    "incident_type": "phishing",
+    "severity": "HIGH",
+    "user": "training-user@sqrock.com",
+    "source": "Day 13 SIEM alert",
+    "description": "Potential phishing activity associated with the affected user."
+  },
+  "response": {
+    "action_count": 9,
+    "actions": [
+      {
+        "action_id": "CON-001",
+        "category": "Containment",
+        "action": "Lock affected user account",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "High or critical severity requires account containment."
+      },
+      {
+        "action_id": "CON-002",
+        "category": "Containment",
+        "action": "Revoke active sessions",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "Limit the possibility of continued unauthorized access."
+      },
+      {
+        "action_id": "COM-001",
+        "category": "Communication",
+        "action": "Notify SOC team",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "Security operations should be informed of significant incidents."
+      },
+      {
+        "action_id": "FOR-001",
+        "category": "Forensics",
+        "action": "Preserve relevant mail and authentication logs",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "Preserve evidence before investigation and remediation."
+      },
+      {
+        "action_id": "PHI-001",
+        "category": "Containment",
+        "action": "Quarantine suspected phishing message",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "Prevent additional interaction with the suspected message."
+      },
+      {
+        "action_id": "PHI-002",
+        "category": "Containment",
+        "action": "Block or review the sender domain",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "Reduce the chance of repeated phishing delivery."
+      },
+      {
+        "action_id": "PHI-003",
+        "category": "Forensics",
+        "action": "Perform attachment and URL analysis in an isolated sandbox",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "Identify potentially malicious content safely."
+      },
+      {
+        "action_id": "DOC-001",
+        "category": "Documentation",
+        "action": "Record incident timeline and response decisions",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "Maintain an auditable incident record."
+      },
+      {
+        "action_id": "LL-001",
+        "category": "Lessons Learned",
+        "action": "Record follow-up actions and preventive recommendations",
+        "status": "SIMULATED",
+        "simulation": true,
+        "reason": "Support post-incident improvement."
+      }
+    ]
+  }
+}
