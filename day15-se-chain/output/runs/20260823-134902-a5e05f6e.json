@@ -1,0 +1,517 @@
+{
+  "metadata": {
+    "run_id": "20260823-134902-a5e05f6e",
+    "target": "127.0.0.1",
+    "mode": "lab",
+    "started_at": "2026-08-23T13:49:02.312345+00:00",
+    "completed_at": "2026-08-23T13:49:04.151567+00:00",
+    "status": "completed",
+    "application": "SE Chain Simulator",
+    "version": "1.0.0"
+  },
+  "authorized": true,
+  "target_config": {
+    "target": "127.0.0.1",
+    "target_type": "localhost",
+    "environment": "lab",
+    "authorized": true,
+    "owner": "Cybersecurity Internship Lab",
+    "purpose": "Authorized social engineering attack-chain simulation"
+  },
+  "module_results": {
+    "osint": {
+      "module": "osint",
+      "success": true,
+      "message": "Passive OSINT collection completed with 1 provider warning(s)",
+      "status": "completed",
+      "data": {
+        "scan_metadata": {
+          "target": "127.0.0.1",
+          "scan_type": "Passive OSINT",
+          "collection_mode": "passive_third_party",
+          "direct_target_probing": false,
+          "timestamp_utc": "2026-08-23T13:49:02.313652+00:00"
+        },
+        "whois": {
+          "_provider_error": "WHOIS lookup failed: Whois command returned no output"
+        },
+        "dns": {
+          "A": [],
+          "AAAA": [],
+          "MX": [],
+          "NS": [],
+          "TXT": []
+        },
+        "resolution": {
+          "ipv4": [
+            "127.0.0.1"
+          ],
+          "ipv6": []
+        },
+        "geolocation": {
+          "127.0.0.1": {
+            "_provider_error": "reserved range"
+          }
+        },
+        "shodan_passive_intel": {
+          "127.0.0.1": {
+            "open_ports": [
+              5060
+            ],
+            "hostnames": [],
+            "cpes": [],
+            "vulnerabilities": []
+          }
+        },
+        "subdomains": {
+          "total_unique": 0,
+          "combined_subdomains": [],
+          "sources": {
+            "AlienVault OTX": {
+              "_provider_error": "AlienVault OTX request failed: 429 Client Error: Too Many Requests for url: https://otx.alienvault.com/api/v1/indicators/domain/127.0.0.1/passive_dns"
+            },
+            "crt.sh": {
+              "_provider_error": "crt.sh request failed: 502 Server Error: Bad Gateway for url: https://crt.sh/?q=%25.127.0.0.1&output=json"
+            },
+            "HackerTarget": {
+              "_provider_error": "HackerTarget rate limit exceeded"
+            }
+          }
+        }
+      },
+      "warnings": [
+        "WHOIS lookup failed: Whois command returned no output"
+      ],
+      "errors": [],
+      "started_at": "2026-08-23T13:49:02.313543+00:00",
+      "completed_at": "2026-08-23T13:49:04.120532+00:00"
+    },
+    "profile": {
+      "module": "profile",
+      "success": true,
+      "message": "Synthetic laboratory target profile created",
+      "status": "completed",
+      "data": {
+        "profile": {
+          "profile_type": "synthetic_lab_profile",
+          "target": "127.0.0.1",
+          "target_type": "localhost",
+          "environment": "lab",
+          "authorized": true,
+          "owner": "Cybersecurity Internship Lab",
+          "purpose": "Authorized social engineering attack-chain simulation",
+          "simulation_scope": [
+            "authorized_lab_metadata",
+            "synthetic_profile_generation",
+            "security_awareness_simulation"
+          ],
+          "real_person_data": false,
+          "external_targeting": false,
+          "simulated": true
+        },
+        "mode": "synthetic_lab_profile",
+        "simulated": true
+      },
+      "warnings": [],
+      "errors": [],
+      "started_at": "2026-08-23T13:49:04.142316+00:00",
+      "completed_at": "2026-08-23T13:49:04.142356+00:00"
+    },
+    "phish": {
+      "module": "phish",
+      "success": true,
+      "message": "Phishing risk analysis completed",
+      "status": "completed",
+      "data": {
+        "url": "https://127.0.0.1",
+        "domain_breakdown": {
+          "subdomain": "",
+          "registered_domain": "127.0.0.1",
+          "tld": "IP"
+        },
+        "risk_assessment": {
+          "score": 40,
+          "level": "MEDIUM",
+          "indicator_count": 1
+        },
+        "indicators": [
+          {
+            "type": "raw_ip_address",
+            "severity": "high",
+            "points": 40,
+            "reason": "URL uses a raw IP address instead of a registered domain."
+          }
+        ]
+      },
+      "warnings": [],
+      "errors": [],
+      "started_at": "2026-08-23T13:49:04.145132+00:00",
+      "completed_at": "2026-08-23T13:49:04.145741+00:00"
+    },
+    "template": {
+      "module": "template",
+      "success": true,
+      "message": "Security-awareness training template generated",
+      "status": "completed",
+      "data": {
+        "template": {
+          "purpose": "security_awareness_training",
+          "delivery": "simulated_only",
+          "target": "127.0.0.1",
+          "risk_score": 40,
+          "risk_level": "MEDIUM",
+          "indicator_types": [
+            "raw_ip_address"
+          ],
+          "learning_objectives": [
+            "Identify suspicious URL characteristics",
+            "Recognize phishing risk indicators",
+            "Verify links before authentication",
+            "Report suspicious messages through approved channels"
+          ],
+          "defensive_message": "Training simulation: inspect the destination URL, verify the domain, and avoid entering credentials when the destination appears suspicious."
+        },
+        "source": {
+          "module": "phish",
+          "risk_score": 40,
+          "risk_level": "MEDIUM",
+          "indicator_count": 1
+        }
+      },
+      "warnings": [],
+      "errors": [],
+      "started_at": "2026-08-23T13:49:04.147677+00:00",
+      "completed_at": "2026-08-23T13:49:04.147708+00:00"
+    },
+    "ir": {
+      "module": "ir",
+      "success": true,
+      "message": "Defensive incident-response simulation completed",
+      "status": "completed",
+      "data": {
+        "response": {
+          "mode": "defensive_simulation",
+          "target": "127.0.0.1",
+          "risk_score": 40,
+          "risk_level": "MEDIUM",
+          "indicator_count": 1,
+          "action_count": 5
+        },
+        "actions": [
+          {
+            "action_type": "account_containment",
+            "description": "Simulated containment of accounts potentially associated with the suspicious activity.",
+            "status": "simulated",
+            "timestamp": "2026-08-23T13:49:04.150737+00:00",
+            "metadata": {
+              "target": "127.0.0.1",
+              "risk_score": 40,
+              "risk_level": "MEDIUM",
+              "indicator_count": 1,
+              "simulated": true,
+              "action_scope": "account"
+            }
+          },
+          {
+            "action_type": "session_invalidation",
+            "description": "Simulated invalidation of active sessions associated with the affected account.",
+            "status": "simulated",
+            "timestamp": "2026-08-23T13:49:04.150742+00:00",
+            "metadata": {
+              "target": "127.0.0.1",
+              "risk_score": 40,
+              "risk_level": "MEDIUM",
+              "indicator_count": 1,
+              "simulated": true,
+              "action_scope": "session"
+            }
+          },
+          {
+            "action_type": "user_notification",
+            "description": "Simulated security notification advising the user to verify the suspicious activity.",
+            "status": "simulated",
+            "timestamp": "2026-08-23T13:49:04.150745+00:00",
+            "metadata": {
+              "target": "127.0.0.1",
+              "risk_score": 40,
+              "risk_level": "MEDIUM",
+              "indicator_count": 1,
+              "simulated": true,
+              "action_scope": "user"
+            }
+          },
+          {
+            "action_type": "evidence_preservation",
+            "description": "Simulated preservation of relevant phishing analysis and chain-event evidence.",
+            "status": "simulated",
+            "timestamp": "2026-08-23T13:49:04.150747+00:00",
+            "metadata": {
+              "target": "127.0.0.1",
+              "risk_score": 40,
+              "risk_level": "MEDIUM",
+              "indicator_count": 1,
+              "simulated": true,
+              "action_scope": "evidence"
+            }
+          },
+          {
+            "action_type": "alert_generation",
+            "description": "Simulated generation of a security alert for the detected social-engineering activity.",
+            "status": "simulated",
+            "timestamp": "2026-08-23T13:49:04.150750+00:00",
+            "metadata": {
+              "target": "127.0.0.1",
+              "risk_score": 40,
+              "risk_level": "MEDIUM",
+              "indicator_count": 1,
+              "simulated": true,
+              "action_scope": "alert"
+            }
+          }
+        ],
+        "source": {
+          "module": "phish",
+          "available": true
+        }
+      },
+      "warnings": [],
+      "errors": [],
+      "started_at": "2026-08-23T13:49:04.150715+00:00",
+      "completed_at": "2026-08-23T13:49:04.150799+00:00"
+    }
+  },
+  "events": [
+    {
+      "event_type": "module_completed",
+      "stage": "osint",
+      "description": "OSINT module completed",
+      "severity": "info",
+      "timestamp": "2026-08-23T13:49:04.120561+00:00",
+      "metadata": {
+        "module": "osint",
+        "success": true,
+        "status": "completed",
+        "warnings": 1,
+        "errors": 0
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "profile_created",
+      "stage": "profile",
+      "description": "Synthetic laboratory target profile created for simulation.",
+      "severity": "info",
+      "timestamp": "2026-08-23T13:49:04.142349+00:00",
+      "metadata": {
+        "profile_type": "synthetic_lab_profile",
+        "target": "127.0.0.1",
+        "simulated": true
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "module_completed",
+      "stage": "profile",
+      "description": "PROFILE module completed",
+      "severity": "info",
+      "timestamp": "2026-08-23T13:49:04.142377+00:00",
+      "metadata": {
+        "module": "profile",
+        "success": true,
+        "status": "completed",
+        "warnings": 0,
+        "errors": 0
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "module_completed",
+      "stage": "phish",
+      "description": "PHISH module completed",
+      "severity": "info",
+      "timestamp": "2026-08-23T13:49:04.145756+00:00",
+      "metadata": {
+        "module": "phish",
+        "success": true,
+        "status": "completed",
+        "warnings": 0,
+        "errors": 0
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "template_generated",
+      "stage": "template",
+      "description": "Generated defensive security-awareness training material from phishing analysis.",
+      "severity": "info",
+      "timestamp": "2026-08-23T13:49:04.147705+00:00",
+      "metadata": {
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "indicator_count": 1
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "module_completed",
+      "stage": "template",
+      "description": "TEMPLATE module completed",
+      "severity": "info",
+      "timestamp": "2026-08-23T13:49:04.147717+00:00",
+      "metadata": {
+        "module": "template",
+        "success": true,
+        "status": "completed",
+        "warnings": 0,
+        "errors": 0
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "alert",
+      "stage": "detection",
+      "description": "Phishing risk detected from analyzed URL",
+      "severity": "medium",
+      "timestamp": "2026-08-23T13:49:04.148686+00:00",
+      "metadata": {
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "indicator_count": 1
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "ir_triggered",
+      "stage": "incident_response",
+      "description": "Defensive incident response triggered by phishing-risk detection",
+      "severity": "medium",
+      "timestamp": "2026-08-23T13:49:04.149559+00:00",
+      "metadata": {
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "trigger": "phishing_detection"
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "ir_triggered",
+      "stage": "incident_response",
+      "description": "Defensive incident-response actions were simulated for the social-engineering scenario.",
+      "severity": "medium",
+      "timestamp": "2026-08-23T13:49:04.150765+00:00",
+      "metadata": {
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "action_count": 5
+      },
+      "simulated": true
+    },
+    {
+      "event_type": "module_completed",
+      "stage": "ir",
+      "description": "IR module completed",
+      "severity": "info",
+      "timestamp": "2026-08-23T13:49:04.150808+00:00",
+      "metadata": {
+        "module": "ir",
+        "success": true,
+        "status": "completed",
+        "warnings": 0,
+        "errors": 0
+      },
+      "simulated": true
+    }
+  ],
+  "ir_actions": [
+    {
+      "action_type": "account_containment",
+      "description": "Simulated containment of accounts potentially associated with the suspicious activity.",
+      "status": "simulated",
+      "timestamp": "2026-08-23T13:49:04.150737+00:00",
+      "metadata": {
+        "target": "127.0.0.1",
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "indicator_count": 1,
+        "simulated": true,
+        "action_scope": "account"
+      }
+    },
+    {
+      "action_type": "session_invalidation",
+      "description": "Simulated invalidation of active sessions associated with the affected account.",
+      "status": "simulated",
+      "timestamp": "2026-08-23T13:49:04.150742+00:00",
+      "metadata": {
+        "target": "127.0.0.1",
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "indicator_count": 1,
+        "simulated": true,
+        "action_scope": "session"
+      }
+    },
+    {
+      "action_type": "user_notification",
+      "description": "Simulated security notification advising the user to verify the suspicious activity.",
+      "status": "simulated",
+      "timestamp": "2026-08-23T13:49:04.150745+00:00",
+      "metadata": {
+        "target": "127.0.0.1",
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "indicator_count": 1,
+        "simulated": true,
+        "action_scope": "user"
+      }
+    },
+    {
+      "action_type": "evidence_preservation",
+      "description": "Simulated preservation of relevant phishing analysis and chain-event evidence.",
+      "status": "simulated",
+      "timestamp": "2026-08-23T13:49:04.150747+00:00",
+      "metadata": {
+        "target": "127.0.0.1",
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "indicator_count": 1,
+        "simulated": true,
+        "action_scope": "evidence"
+      }
+    },
+    {
+      "action_type": "alert_generation",
+      "description": "Simulated generation of a security alert for the detected social-engineering activity.",
+      "status": "simulated",
+      "timestamp": "2026-08-23T13:49:04.150750+00:00",
+      "metadata": {
+        "target": "127.0.0.1",
+        "risk_score": 40,
+        "risk_level": "MEDIUM",
+        "indicator_count": 1,
+        "simulated": true,
+        "action_scope": "alert"
+      }
+    }
+  ],
+  "data": {
+    "profile": {
+      "profile_type": "synthetic_lab_profile",
+      "target": "127.0.0.1",
+      "target_type": "localhost",
+      "environment": "lab",
+      "authorized": true,
+      "owner": "Cybersecurity Internship Lab",
+      "purpose": "Authorized social engineering attack-chain simulation",
+      "simulation_scope": [
+        "authorized_lab_metadata",
+        "synthetic_profile_generation",
+        "security_awareness_simulation"
+      ],
+      "real_person_data": false,
+      "external_targeting": false,
+      "simulated": true
+    }
+  },
+  "errors": []
+}

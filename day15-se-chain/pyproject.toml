@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "se-chain-simulator"
+version = "0.1.0"
+description = "Ethical social engineering attack-chain simulation framework"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+
+dependencies = [
+    "requests>=2.31,<3",
+    "dnspython>=2.6,<3",
+    "python-whois>=0.9,<1",
+    "colorama>=0.4,<1",
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8,<9",
+]
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["se_chain*"]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-ra"

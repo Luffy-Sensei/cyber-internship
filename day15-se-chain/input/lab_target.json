@@ -1,0 +1,8 @@
+{
+    "target": "127.0.0.1",
+    "target_type": "localhost",
+    "environment": "lab",
+    "authorized": true,
+    "owner": "Cybersecurity Internship Lab",
+    "purpose": "Authorized social engineering attack-chain simulation"
+}

@@ -1,0 +1,75 @@
+======================================================================
+SE CHAIN SIMULATOR - RUN REPORT
+======================================================================
+
+RUN
+----------------------------------------------------------------------
+Run ID : 20260823-104418-4fa3b587
+Target : 127.0.0.1
+Mode   : lab
+Status : completed
+
+AUTHORIZATION
+----------------------------------------------------------------------
+Authorized : True
+
+MODULES
+----------------------------------------------------------------------
+osint: SUCCESS
+  Status  : completed
+  Message : Passive OSINT collection completed with 1 provider warning(s)
+  Warnings:
+    - WHOIS lookup failed: Whois command returned no output
+
+phish: SUCCESS
+  Status  : completed
+  Message : Phishing risk analysis completed
+
+template: SUCCESS
+  Status  : completed
+  Message : Security-awareness training template generated
+
+ir: SUCCESS
+  Status  : completed
+  Message : Defensive incident-response simulation completed
+
+EVENTS
+----------------------------------------------------------------------
+[INFO] module_completed (osint)
+  OSINT module completed
+[INFO] module_completed (phish)
+  PHISH module completed
+[INFO] template_generated (template)
+  Generated defensive security-awareness training material from phishing analysis.
+[INFO] module_completed (template)
+  TEMPLATE module completed
+[MEDIUM] alert (detection)
+  Phishing risk detected from analyzed URL
+[MEDIUM] ir_triggered (incident_response)
+  Defensive incident response triggered by phishing-risk detection
+[MEDIUM] ir_triggered (incident_response)
+  Defensive incident-response actions were simulated for the social-engineering scenario.
+[INFO] module_completed (ir)
+  IR module completed
+
+INCIDENT RESPONSE ACTIONS
+----------------------------------------------------------------------
+- account_containment: simulated
+  Simulated containment of accounts potentially associated with the suspicious activity.
+- session_invalidation: simulated
+  Simulated invalidation of active sessions associated with the affected account.
+- user_notification: simulated
+  Simulated security notification advising the user to verify the suspicious activity.
+- evidence_preservation: simulated
+  Simulated preservation of relevant phishing analysis and chain-event evidence.
+- alert_generation: simulated
+  Simulated generation of a security alert for the detected social-engineering activity.
+
+SUMMARY
+----------------------------------------------------------------------
+Events generated : 8
+IR actions       : 5
+Risk score       : 40
+Risk level       : MEDIUM
+
+======================================================================
