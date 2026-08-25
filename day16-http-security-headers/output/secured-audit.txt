@@ -1,0 +1,11 @@
+[*] Auditing Target Headers: http://127.0.0.1:8000
+[*] Environment: Authorized Localhost Lab
+
+[*] HTTP Status: 200
+
+[+] CONFIGURED: Strict-Transport-Security -> max-age=31536000
+[+] CONFIGURED: Content-Security-Policy -> default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'
+[+] CONFIGURED: X-Frame-Options -> DENY
+[+] CONFIGURED: X-Content-Type-Options -> nosniff
+
+[*] Header audit completed.
