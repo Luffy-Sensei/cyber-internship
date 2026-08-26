@@ -1,0 +1,52 @@
+DAY 17 - LOCAL NETWORK SECURITY REPORT
+============================================================
+
+Target : 127.0.0.1
+Ports  : [22, 80, 443, 5432, 8080]
+Timeout: 1.0s
+
+PORT RESULTS
+------------------------------------------------------------
+22/TCP CLOSED   SSH              REMOTE_ADMINISTRATION 
+80/TCP OPEN     HTTP             WEB                   
+  Detection: HTTP_PROBE
+  Confidence: HIGH
+  Evidence: HTTP/1.1 200 OK
+443/TCP CLOSED   HTTPS            WEB                   
+5432/TCP CLOSED   PostgreSQL       DATABASE              
+8080/TCP CLOSED   HTTP-ALT         WEB                   
+
+SECURITY FINDINGS
+------------------------------------------------------------
+[NONE] 22/TCP - No exposed service detected
+  Service: SSH
+  Description: The TCP endpoint did not accept a connection during the scan.
+  Recommendation: No immediate action is required for this endpoint.
+
+[LOW] 80/TCP - Web service exposed
+  Service: HTTP
+  Description: HTTP is accepting TCP connections on port 80.
+  Recommendation: Verify that the web service is intentional and apply appropriate application and transport security.
+
+[NONE] 443/TCP - No exposed service detected
+  Service: HTTPS
+  Description: The TCP endpoint did not accept a connection during the scan.
+  Recommendation: No immediate action is required for this endpoint.
+
+[NONE] 5432/TCP - No exposed service detected
+  Service: PostgreSQL
+  Description: The TCP endpoint did not accept a connection during the scan.
+  Recommendation: No immediate action is required for this endpoint.
+
+[NONE] 8080/TCP - No exposed service detected
+  Service: HTTP-ALT
+  Description: The TCP endpoint did not accept a connection during the scan.
+  Recommendation: No immediate action is required for this endpoint.
+
+RISK SUMMARY
+------------------------------------------------------------
+NONE      : 4
+LOW       : 1
+MEDIUM    : 0
+HIGH      : 0
+CRITICAL  : 0

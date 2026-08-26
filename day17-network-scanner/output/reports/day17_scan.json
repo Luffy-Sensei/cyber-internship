@@ -1,0 +1,202 @@
+{
+    "metadata": {
+        "tool": "Day 17 Local Network Port Scanner",
+        "version": "1.0.0",
+        "run_id": "4d5fa9e3-92b3-4596-8eda-da05b5b829f2",
+        "generated_at": "2026-08-26T06:37:36.790051+00:00"
+    },
+    "target": {
+        "host": "127.0.0.1",
+        "ports": [
+            22,
+            80,
+            443,
+            5432,
+            8080
+        ],
+        "timeout": 1.0
+    },
+    "scan_results": [
+        {
+            "host": "127.0.0.1",
+            "port": 22,
+            "protocol": "TCP",
+            "state": "CLOSED",
+            "latency_ms": 0.38,
+            "error": null
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 80,
+            "protocol": "TCP",
+            "state": "OPEN",
+            "latency_ms": 0.31,
+            "error": null
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 443,
+            "protocol": "TCP",
+            "state": "CLOSED",
+            "latency_ms": 2.19,
+            "error": null
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 5432,
+            "protocol": "TCP",
+            "state": "CLOSED",
+            "latency_ms": 6.19,
+            "error": null
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 8080,
+            "protocol": "TCP",
+            "state": "CLOSED",
+            "latency_ms": 0.37,
+            "error": null
+        }
+    ],
+    "service_results": [
+        {
+            "host": "127.0.0.1",
+            "port": 22,
+            "protocol": "TCP",
+            "state": "CLOSED",
+            "service": "SSH",
+            "category": "REMOTE_ADMINISTRATION",
+            "confidence": "NONE",
+            "detection_method": "NO_SERVICE_IDENTIFICATION",
+            "latency_ms": 0.38,
+            "evidence": null
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 80,
+            "protocol": "TCP",
+            "state": "OPEN",
+            "service": "HTTP",
+            "category": "WEB",
+            "confidence": "HIGH",
+            "detection_method": "HTTP_PROBE",
+            "latency_ms": 0.31,
+            "evidence": "HTTP/1.1 200 OK"
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 443,
+            "protocol": "TCP",
+            "state": "CLOSED",
+            "service": "HTTPS",
+            "category": "WEB",
+            "confidence": "NONE",
+            "detection_method": "NO_SERVICE_IDENTIFICATION",
+            "latency_ms": 2.19,
+            "evidence": null
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 5432,
+            "protocol": "TCP",
+            "state": "CLOSED",
+            "service": "PostgreSQL",
+            "category": "DATABASE",
+            "confidence": "NONE",
+            "detection_method": "NO_SERVICE_IDENTIFICATION",
+            "latency_ms": 6.19,
+            "evidence": null
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 8080,
+            "protocol": "TCP",
+            "state": "CLOSED",
+            "service": "HTTP-ALT",
+            "category": "WEB",
+            "confidence": "NONE",
+            "detection_method": "NO_SERVICE_IDENTIFICATION",
+            "latency_ms": 0.37,
+            "evidence": null
+        }
+    ],
+    "security_findings": [
+        {
+            "host": "127.0.0.1",
+            "port": 22,
+            "service": "SSH",
+            "category": "REMOTE_ADMINISTRATION",
+            "risk": "NONE",
+            "title": "No exposed service detected",
+            "description": "The TCP endpoint did not accept a connection during the scan.",
+            "recommendation": "No immediate action is required for this endpoint."
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 80,
+            "service": "HTTP",
+            "category": "WEB",
+            "risk": "LOW",
+            "title": "Web service exposed",
+            "description": "HTTP is accepting TCP connections on port 80.",
+            "recommendation": "Verify that the web service is intentional and apply appropriate application and transport security."
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 443,
+            "service": "HTTPS",
+            "category": "WEB",
+            "risk": "NONE",
+            "title": "No exposed service detected",
+            "description": "The TCP endpoint did not accept a connection during the scan.",
+            "recommendation": "No immediate action is required for this endpoint."
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 5432,
+            "service": "PostgreSQL",
+            "category": "DATABASE",
+            "risk": "NONE",
+            "title": "No exposed service detected",
+            "description": "The TCP endpoint did not accept a connection during the scan.",
+            "recommendation": "No immediate action is required for this endpoint."
+        },
+        {
+            "host": "127.0.0.1",
+            "port": 8080,
+            "service": "HTTP-ALT",
+            "category": "WEB",
+            "risk": "NONE",
+            "title": "No exposed service detected",
+            "description": "The TCP endpoint did not accept a connection during the scan.",
+            "recommendation": "No immediate action is required for this endpoint."
+        }
+    ],
+    "risk_summary": {
+        "NONE": 4,
+        "LOW": 1,
+        "MEDIUM": 0,
+        "HIGH": 0,
+        "CRITICAL": 0
+    },
+    "topology": {
+        "nodes": [
+            {
+                "id": "localhost",
+                "type": "developer_host",
+                "address": "127.0.0.1"
+            }
+        ],
+        "edges": [
+            {
+                "source": "localhost",
+                "destination": "127.0.0.1:80",
+                "protocol": "TCP",
+                "port": 80,
+                "state": "OPEN",
+                "service": "HTTP",
+                "risk": "LOW"
+            }
+        ]
+    }
+}
