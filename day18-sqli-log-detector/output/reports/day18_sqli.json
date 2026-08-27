@@ -1,0 +1,58 @@
+{
+  "report_version": "1.0",
+  "run_id": "f54098ef-2549-4034-8c35-737c5b22a006",
+  "generated_at": "2026-08-27T08:54:56.487575+00:00",
+  "input_file": "input/mock_access.log",
+  "statistics": {
+    "total_entries": 3,
+    "detections": 2,
+    "critical": 1,
+    "high": 1,
+    "medium": 0,
+    "low": 0
+  },
+  "findings": [
+    {
+      "source_ip": "10.0.4.12",
+      "method": "POST",
+      "path": "/auth/login?user=admin%27%20OR%20%271%27=%271",
+      "status_code": 401,
+      "severity": "HIGH",
+      "score": 70,
+      "classification": "SQLI_INDICATOR",
+      "recommendation": "Investigate the source request, review application parameter handling, and verify that database access uses parameterized queries.",
+      "detections": [
+        {
+          "signature": "TAUTOLOGY",
+          "confidence": "HIGH",
+          "description": "OR-based tautological SQL condition detected.",
+          "evidence": "OR '1'='1"
+        }
+      ]
+    },
+    {
+      "source_ip": "172.16.5.9",
+      "method": "GET",
+      "path": "/search?q=UNION%20SELECT%20null,password%20FROM%20users--",
+      "status_code": 500,
+      "severity": "CRITICAL",
+      "score": 100,
+      "classification": "SQLI_INDICATOR",
+      "recommendation": "Investigate the source request, review application parameter handling, and verify that database access uses parameterized queries.",
+      "detections": [
+        {
+          "signature": "UNION_SELECT",
+          "confidence": "HIGH",
+          "description": "SQL UNION SELECT syntax detected.",
+          "evidence": "UNION SELECT"
+        },
+        {
+          "signature": "SQL_COMMENT",
+          "confidence": "MEDIUM",
+          "description": "SQL comment syntax detected.",
+          "evidence": "--"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+DAY 18 - SQL INJECTION SECURITY REPORT
+============================================================
+
+Run ID       : f54098ef-2549-4034-8c35-737c5b22a006
+Generated    : 2026-08-27T08:54:56.487575+00:00
+Input        : input/mock_access.log
+SUMMARY
+------------------------------------------------------------
+Entries      : 3
+Detections   : 2
+Critical     : 1
+High         : 1
+Medium       : 0
+Low          : 0
+
+FINDINGS
+------------------------------------------------------------
+
+Finding #1
+Source       : 10.0.4.12
+Method       : POST
+Path         : /auth/login?user=admin%27%20OR%20%271%27=%271
+Status       : 401
+Severity     : HIGH
+Risk Score   : 70
+Classification: SQLI_INDICATOR
+
+Detections:
+  - TAUTOLOGY (HIGH) Evidence: OR '1'='1
+
+Recommendation:
+  Investigate the source request, review application parameter handling, and verify that database access uses parameterized queries.
+
+Finding #2
+Source       : 172.16.5.9
+Method       : GET
+Path         : /search?q=UNION%20SELECT%20null,password%20FROM%20users--
+Status       : 500
+Severity     : CRITICAL
+Risk Score   : 100
+Classification: SQLI_INDICATOR
+
+Detections:
+  - UNION_SELECT (HIGH) Evidence: UNION SELECT
+  - SQL_COMMENT (MEDIUM) Evidence: --
+
+Recommendation:
+  Investigate the source request, review application parameter handling, and verify that database access uses parameterized queries.
