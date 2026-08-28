@@ -1,0 +1,9 @@
+FROM python:latest
+
+WORKDIR /app
+
+COPY . /app
+
+EXPOSE 22
+
+CMD ["python", "app.py"]

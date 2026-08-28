@@ -1,0 +1,44 @@
+DAY 19 - DOCKER SECURITY REPORT
+============================================================
+
+Run ID       : 4700c87f-fced-466a-a462-dbcb9973846f
+Generated    : 2026-08-28T10:14:37.426375+00:00
+Input        : input/Dockerfile.insecure
+
+SUMMARY
+------------------------------------------------------------
+Findings     : 3
+Critical     : 1
+High         : 1
+Medium       : 1
+Low          : 0
+
+FINDINGS
+------------------------------------------------------------
+
+Finding #1
+Rule         : LATEST_TAG
+Line         : 1
+Severity     : MEDIUM
+Risk Score   : 50
+Classification: DOCKERFILE_MISCONFIGURATION
+Message      : Base image uses the unpinned 'latest' tag.
+Recommendation: Pin the base image to a specific version or immutable digest.
+
+Finding #2
+Rule         : SSH_EXPOSED
+Line         : 7
+Severity     : CRITICAL
+Risk Score   : 100
+Classification: DOCKERFILE_MISCONFIGURATION
+Message      : Dockerfile exposes SSH on TCP port 22.
+Recommendation: Remove SSH exposure unless it is explicitly required.
+
+Finding #3
+Rule         : MISSING_USER
+Line         : None
+Severity     : HIGH
+Risk Score   : 75
+Classification: DOCKERFILE_MISCONFIGURATION
+Message      : Dockerfile does not define an explicit USER.
+Recommendation: Run the application as a dedicated non-privileged user.

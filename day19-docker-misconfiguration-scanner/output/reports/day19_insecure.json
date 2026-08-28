@@ -1,0 +1,42 @@
+{
+  "report_version": "1.0",
+  "run_id": "4700c87f-fced-466a-a462-dbcb9973846f",
+  "generated_at": "2026-08-28T10:14:37.426375+00:00",
+  "input_file": "input/Dockerfile.insecure",
+  "statistics": {
+    "findings": 3,
+    "critical": 1,
+    "high": 1,
+    "medium": 1,
+    "low": 0
+  },
+  "findings": [
+    {
+      "rule_id": "LATEST_TAG",
+      "line_number": 1,
+      "message": "Base image uses the unpinned 'latest' tag.",
+      "severity": "MEDIUM",
+      "score": 50,
+      "classification": "DOCKERFILE_MISCONFIGURATION",
+      "recommendation": "Pin the base image to a specific version or immutable digest."
+    },
+    {
+      "rule_id": "SSH_EXPOSED",
+      "line_number": 7,
+      "message": "Dockerfile exposes SSH on TCP port 22.",
+      "severity": "CRITICAL",
+      "score": 100,
+      "classification": "DOCKERFILE_MISCONFIGURATION",
+      "recommendation": "Remove SSH exposure unless it is explicitly required."
+    },
+    {
+      "rule_id": "MISSING_USER",
+      "line_number": null,
+      "message": "Dockerfile does not define an explicit USER.",
+      "severity": "HIGH",
+      "score": 75,
+      "classification": "DOCKERFILE_MISCONFIGURATION",
+      "recommendation": "Run the application as a dedicated non-privileged user."
+    }
+  ]
+}
