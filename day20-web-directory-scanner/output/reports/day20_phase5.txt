@@ -1,0 +1,61 @@
+============================================================
+DAY 20 - WEB DIRECTORY DISCOVERY SCAN
+============================================================
+
+Target           : http://127.0.0.1:5000
+Scan ID          : 850d5a5f-df2a-4d24-813c-6d85ad57e5a8
+Started          : 2026-08-29T10:50:41.894144+00:00
+Completed        : 2026-08-29T10:50:41.894155+00:00
+Duration         : 0.0s
+Wordlist size    : 11
+Requests sent    : 11
+
+SUMMARY
+------------------------------------------------------------
+Total findings   : 5
+Critical         : 2
+High             : 0
+Medium           : 2
+Low              : 1
+
+FINDINGS
+------------------------------------------------------------
+
+[1] DIRECTORY_403
+Severity       : LOW
+Path           : admin
+Status         : 403
+Evidence       : HTTP 403
+Recommendation : Keep access controls in place and verify that restricted resources cannot be bypassed.
+
+[2] DIRECTORY_200
+Severity       : MEDIUM
+Path           : .env
+Status         : 200
+Evidence       : HTTP 200; response length=55
+Recommendation : Review whether the discovered endpoint should be publicly accessible.
+
+[3] SENSITIVE_EXPOSURE
+Severity       : CRITICAL
+Path           : .env
+Status         : 200
+Evidence       : HTTP 200; response length=55
+Recommendation : Remove sensitive files from the web root and enforce explicit server-side access restrictions.
+
+[4] DIRECTORY_200
+Severity       : MEDIUM
+Path           : backup.sql
+Status         : 200
+Evidence       : HTTP 200; response length=59
+Recommendation : Review whether the discovered endpoint should be publicly accessible.
+
+[5] SENSITIVE_EXPOSURE
+Severity       : CRITICAL
+Path           : backup.sql
+Status         : 200
+Evidence       : HTTP 200; response length=59
+Recommendation : Remove sensitive files from the web root and enforce explicit server-side access restrictions.
+
+============================================================
+END OF REPORT
+============================================================

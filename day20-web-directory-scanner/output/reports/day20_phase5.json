@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "scan_id": "850d5a5f-df2a-4d24-813c-6d85ad57e5a8",
+  "target": "http://127.0.0.1:5000",
+  "started_at": "2026-08-29T10:50:41.894144+00:00",
+  "completed_at": "2026-08-29T10:50:41.894155+00:00",
+  "duration_seconds": 0.0,
+  "wordlist_size": 11,
+  "requests_sent": 11,
+  "findings": [
+    {
+      "rule_id": "DIRECTORY_403",
+      "path": "admin",
+      "url": "http://127.0.0.1:5000/admin",
+      "status_code": 403,
+      "message": "Endpoint exists but access is forbidden.",
+      "evidence": "HTTP 403",
+      "severity": "LOW",
+      "risk_score": 5,
+      "classification": "LOW",
+      "recommendation": "Keep access controls in place and verify that restricted resources cannot be bypassed."
+    },
+    {
+      "rule_id": "DIRECTORY_200",
+      "path": ".env",
+      "url": "http://127.0.0.1:5000/.env",
+      "status_code": 200,
+      "message": "Endpoint is accessible.",
+      "evidence": "HTTP 200; response length=55",
+      "severity": "MEDIUM",
+      "risk_score": 20,
+      "classification": "MEDIUM",
+      "recommendation": "Review whether the discovered endpoint should be publicly accessible."
+    },
+    {
+      "rule_id": "SENSITIVE_EXPOSURE",
+      "path": ".env",
+      "url": "http://127.0.0.1:5000/.env",
+      "status_code": 200,
+      "message": "Sensitive path is publicly accessible.",
+      "evidence": "HTTP 200; response length=55",
+      "severity": "CRITICAL",
+      "risk_score": 90,
+      "classification": "CRITICAL",
+      "recommendation": "Remove sensitive files from the web root and enforce explicit server-side access restrictions."
+    },
+    {
+      "rule_id": "DIRECTORY_200",
+      "path": "backup.sql",
+      "url": "http://127.0.0.1:5000/backup.sql",
+      "status_code": 200,
+      "message": "Endpoint is accessible.",
+      "evidence": "HTTP 200; response length=59",
+      "severity": "MEDIUM",
+      "risk_score": 20,
+      "classification": "MEDIUM",
+      "recommendation": "Review whether the discovered endpoint should be publicly accessible."
+    },
+    {
+      "rule_id": "SENSITIVE_EXPOSURE",
+      "path": "backup.sql",
+      "url": "http://127.0.0.1:5000/backup.sql",
+      "status_code": 200,
+      "message": "Sensitive path is publicly accessible.",
+      "evidence": "HTTP 200; response length=59",
+      "severity": "CRITICAL",
+      "risk_score": 90,
+      "classification": "CRITICAL",
+      "recommendation": "Remove sensitive files from the web root and enforce explicit server-side access restrictions."
+    }
+  ],
+  "summary": {
+    "total_findings": 5,
+    "critical": 2,
+    "high": 0,
+    "medium": 2,
+    "low": 1
+  }
+}

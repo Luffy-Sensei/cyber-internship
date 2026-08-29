@@ -1,0 +1,16 @@
+# Common application routes
+admin
+dashboard
+api
+api/v1
+
+# Sensitive files and directories
+.env
+.git/
+backup.sql
+backup.zip
+
+# Common operational locations
+login
+uploads
+static

@@ -1,0 +1,844 @@
+# DAY 20 — TARGET CHANGE GUIDE
+
+## Purpose
+
+This document explains how to change the scan target for the Day 20
+Web Directory Discovery Scanner.
+
+The scanner is designed for authorized security testing only.
+
+The target is NOT hard-coded into the scanner's core detection, risk,
+or reporting logic. The target is supplied at runtime through the CLI
+using the --url argument.
+
+## Project location
+
+day20-web-directory-scanner/
+
+Important directories:
+
+```
+app/
+input/
+output/
+scanner/
+tests/
+report/
+screenshots/
+```
+
+1. PRIMARY FILE TO CHANGE
+
+---
+
+For a normal target change, NO Python source file inside scanner/
+needs to be modified.
+
+The target is supplied directly to scanner/cli.py through:
+
+```
+--url
+```
+
+Example:
+
+```
+python3 -m scanner.cli \
+    --url http://127.0.0.1:5000 \
+    --wordlist input/paths.txt
+```
+
+To change the target, simply replace the value of --url.
+
+Example authorized target:
+
+```
+python3 -m scanner.cli \
+    --url http://127.0.0.1:8000 \
+    --wordlist input/paths.txt
+```
+
+Another authorized lab target:
+
+```
+python3 -m scanner.cli \
+    --url https://authorized-lab.example \
+    --wordlist input/paths.txt
+```
+
+## 2. scanner/cli.py
+
+FILE:
+
+```
+scanner/cli.py
+```
+
+This is the main runtime entry point.
+
+The CLI defines:
+
+```
+--url
+--wordlist
+--json
+--text
+--timeout
+--follow-redirects
+--verbose
+```
+
+The target is accepted here:
+
+```
+--url URL
+```
+
+The CLI passes the supplied target to:
+
+```
+build_config()
+```
+
+Therefore, scanner/cli.py normally DOES NOT need to be edited when
+changing targets.
+
+Use the command line instead.
+
+3. scanner/config.py
+
+---
+
+FILE:
+
+```
+scanner/config.py
+```
+
+This file validates and normalizes the target.
+
+The function:
+
+```
+normalize_base_url()
+```
+
+requires the target to use:
+
+```
+http://
+https://
+```
+
+It also requires a hostname.
+
+Examples accepted:
+
+```
+http://127.0.0.1:5000
+http://localhost:5000
+http://127.0.0.1:8000
+https://authorized.example
+```
+
+Examples rejected:
+
+```
+127.0.0.1:5000
+localhost:5000
+ftp://example.com
+example.com
+```
+
+Do NOT normally modify this file just to change the target.
+
+Its purpose is target validation, not target storage.
+
+4. scanner/models.py
+
+---
+
+FILE:
+
+```
+scanner/models.py
+```
+
+This file defines:
+
+```
+ScanConfig
+PathResult
+```
+
+ScanConfig contains:
+
+```
+base_url
+wordlist_path
+timeout
+follow_redirects
+```
+
+The target is represented by:
+
+```
+base_url
+```
+
+No target-specific modification is required here.
+
+5. scanner/client.py
+
+---
+
+FILE:
+
+```
+scanner/client.py
+```
+
+HTTPClient receives the ScanConfig and constructs the request URL.
+
+The target is combined with each wordlist entry.
+
+For example:
+
+```
+Target:
+    http://127.0.0.1:5000
+
+Wordlist entry:
+    .env
+
+Resulting request:
+    http://127.0.0.1:5000/.env
+```
+
+Changing the target does NOT require modifying client.py.
+
+6. scanner/analyzer.py
+
+---
+
+FILE:
+
+```
+scanner/analyzer.py
+```
+
+The analyzer receives the target from the CLI/configuration layer.
+
+It coordinates:
+
+```
+PathResult
+    |
+    v
+SecurityDetector
+    |
+    v
+RiskAnalyzer
+    |
+    v
+ScanReporter
+```
+
+Do NOT change analyzer.py simply to change the target.
+
+7. scanner/detector.py
+
+---
+
+FILE:
+
+```
+scanner/detector.py
+```
+
+This file determines whether a discovered path represents a security
+finding.
+
+Examples include:
+
+```
+HTTP 200
+HTTP 403
+HTTP redirects
+HTTP 5xx
+sensitive paths
+```
+
+The detector is target-independent.
+
+Do NOT change detector.py when changing the target.
+
+8. scanner/risk.py
+
+---
+
+FILE:
+
+```
+scanner/risk.py
+```
+
+This file assigns:
+
+```
+severity
+risk score
+classification
+recommendation
+```
+
+Examples:
+
+```
+DIRECTORY_200
+    MEDIUM
+    20
+
+DIRECTORY_403
+    LOW
+    5
+
+SENSITIVE_EXPOSURE
+    CRITICAL
+    90
+```
+
+Risk logic is target-independent.
+
+Do NOT modify risk.py for a normal target change.
+
+9. scanner/rules.py
+
+---
+
+FILE:
+
+```
+scanner/rules.py
+```
+
+This file contains the scanner's detection rules and sensitive-path
+logic.
+
+If the authorized target uses different application-specific paths,
+rules may eventually be extended here.
+
+However, this is NOT where the target itself should be configured.
+
+10. input/paths.txt
+
+---
+
+FILE:
+
+```
+input/paths.txt
+```
+
+This file controls WHICH paths are requested.
+
+It does NOT control WHICH HOST is scanned.
+
+Example:
+
+```
+admin
+dashboard
+api
+.env
+backup.sql
+login
+uploads
+```
+
+Changing:
+
+```
+input/paths.txt
+```
+
+changes the discovery wordlist.
+
+It does NOT change the target.
+
+For example:
+
+```
+--url http://127.0.0.1:5000
+```
+
+with:
+
+```
+.env
+```
+
+results in:
+
+```
+http://127.0.0.1:5000/.env
+```
+
+## 11. app/server.py
+
+FILE:
+
+```
+app/server.py
+```
+
+This file belongs to the intentionally vulnerable LOCAL LAB SERVER.
+
+It controls the routes exposed by the training server.
+
+Current lab behavior includes:
+
+```
+/                    -> 200
+/admin               -> 403
+/.env                -> 200
+/backup.sql          -> 200
+unknown paths        -> 404
+```
+
+If you want to test the scanner against another LOCAL training
+application, you may modify or replace app/server.py.
+
+This is different from changing the scanner's target.
+
+For example:
+
+```
+Scanner target:
+    http://127.0.0.1:5000
+
+Local lab server:
+    app/server.py
+```
+
+If app/server.py is moved to port 8000, start it on that port and
+scan:
+
+```
+http://127.0.0.1:8000
+```
+
+## 12. output/reports/
+
+Directory:
+
+```
+output/reports/
+```
+
+This directory stores generated scan reports.
+
+Example:
+
+```
+output/reports/day20_phase5.json
+output/reports/day20_phase5.txt
+```
+
+When testing a new target, it is recommended to use a new report name.
+
+Example:
+
+```
+--json output/reports/authorized_target.json
+--text output/reports/authorized_target.txt
+```
+
+The target should NOT be manually edited inside an old report.
+
+Generate a new report instead.
+
+13. output/logs/
+
+---
+
+Directory:
+
+```
+output/logs/
+```
+
+This directory is intended for scan logs and execution evidence.
+
+Logs can be useful for documenting:
+
+```
+target
+requests
+HTTP responses
+errors
+scan completion
+```
+
+Do not use an old log as evidence for a new target.
+
+14. tests/
+
+---
+
+Directory:
+
+```
+tests/
+```
+
+The tests validate scanner behavior.
+
+The existing tests primarily use:
+
+```
+http://127.0.0.1:5000
+```
+
+This is intentional test data.
+
+Changing the runtime target does not require changing the tests.
+
+If the scanner's behavior is modified, update the relevant tests as
+part of that code change.
+
+15. report/day20-report.md
+
+---
+
+FILE:
+
+```
+report/day20-report.md
+```
+
+This is the professional assessment/report document.
+
+If the report describes a specific target, update the documented
+target when producing a report for a different authorized assessment.
+
+Do not confuse the report's documented target with the scanner's
+runtime configuration.
+
+The actual scan target is controlled by:
+
+```
+scanner/cli.py
+--url
+```
+
+## 16. RECOMMENDED TARGET-CHANGE WORKFLOW
+
+Step 1 — Verify authorization
+
+Confirm that you have permission to scan the target.
+
+Only scan systems that you own or are explicitly authorized to
+security-test.
+
+Step 2 — Verify the target manually
+
+For a local lab:
+
+```
+curl -i http://127.0.0.1:5000/
+```
+
+For another authorized HTTP lab:
+
+```
+curl -i http://AUTHORIZED-TARGET/
+```
+
+Confirm that the service is reachable.
+
+Step 3 — Run the scanner
+
+Example:
+
+```
+python3 -m scanner.cli \
+    --url http://127.0.0.1:5000 \
+    --wordlist input/paths.txt \
+    --json output/reports/day20_phase6.json \
+    --text output/reports/day20_phase6.txt \
+    --verbose
+```
+
+Step 4 — Check the generated report
+
+Inspect:
+
+```
+output/reports/day20_phase6.json
+```
+
+and:
+
+```
+output/reports/day20_phase6.txt
+```
+
+Step 5 — Verify the target recorded in JSON
+
+Use:
+
+```
+python3 - <<'PY'
+import json
+
+path = "output/reports/day20_phase6.json"
+
+with open(path, encoding="utf-8") as f:
+    report = json.load(f)
+
+print("Target:", report["target"])
+print("Requests:", report["requests_sent"])
+print("Findings:", report["summary"]["total_findings"])
+PY
+```
+
+Step 6 — Run the automated test suite
+
+```
+python3 -m pytest -q
+```
+
+All tests should remain green.
+
+17. WHAT SHOULD BE CHANGED?
+
+---
+
+NORMAL TARGET CHANGE:
+
+```
+Change:
+    --url
+
+Usually no source code changes are required.
+```
+
+CHANGE THE PATHS BEING TESTED:
+
+```
+Change:
+    input/paths.txt
+```
+
+CHANGE THE LOCAL TRAINING SERVER:
+
+```
+Change:
+    app/server.py
+```
+
+CHANGE DETECTION LOGIC:
+
+```
+Change:
+    scanner/rules.py
+    scanner/detector.py
+
+Add/update corresponding tests.
+```
+
+CHANGE RISK SCORING:
+
+```
+Change:
+    scanner/risk.py
+
+Add/update corresponding tests.
+```
+
+CHANGE REPORT FORMAT:
+
+```
+Change:
+    scanner/reporting.py
+    scanner/report_schema.py
+
+Add/update corresponding tests.
+```
+
+CHANGE CLI OPTIONS:
+
+```
+Change:
+    scanner/cli.py
+
+Add/update CLI tests.
+```
+
+## 18. DO NOT HARD-CODE TARGETS
+
+Avoid modifying scanner/client.py, scanner/analyzer.py, scanner/detector.py,
+or scanner/risk.py simply to change a target.
+
+Do NOT add code such as:
+
+```
+TARGET = "http://example.com"
+```
+
+inside scanner modules unless there is a deliberate architectural
+reason.
+
+The current design is better because the target is supplied at
+runtime:
+
+```
+--url TARGET
+```
+
+## 19. QUICK REFERENCE
+
+TARGET:
+
+```
+--url
+```
+
+WORDLIST:
+
+```
+--wordlist
+```
+
+HTTP TIMEOUT:
+
+```
+--timeout
+```
+
+FOLLOW REDIRECTS:
+
+```
+--follow-redirects
+```
+
+JSON REPORT:
+
+```
+--json
+```
+
+TEXT REPORT:
+
+```
+--text
+```
+
+VERBOSE LOGGING:
+
+```
+--verbose
+```
+
+## 20. COMPLETE EXAMPLE
+
+Local target:
+
+```
+python3 -m scanner.cli \
+    --url http://127.0.0.1:5000 \
+    --wordlist input/paths.txt \
+    --json output/reports/day20_local.json \
+    --text output/reports/day20_local.txt \
+    --verbose
+```
+
+Different authorized local port:
+
+```
+python3 -m scanner.cli \
+    --url http://127.0.0.1:8000 \
+    --wordlist input/paths.txt \
+    --json output/reports/day20_8000.json \
+    --text output/reports/day20_8000.txt
+```
+
+Authorized remote assessment target:
+
+```
+python3 -m scanner.cli \
+    --url https://authorized-target.example \
+    --wordlist input/paths.txt \
+    --json output/reports/day20_authorized.json \
+    --text output/reports/day20_authorized.txt \
+    --verbose
+```
+
+## 21. FINAL VALIDATION CHECKLIST
+
+Before declaring a target-change test successful:
+
+[ ] Target is authorized.
+[ ] Target uses HTTP or HTTPS.
+[ ] Target is reachable.
+[ ] Correct --url was supplied.
+[ ] Correct wordlist was supplied.
+[ ] Scanner completed without errors.
+[ ] JSON report was generated.
+[ ] TXT report was generated.
+[ ] JSON target matches the intended target.
+[ ] Request count matches the wordlist size.
+[ ] Findings are reasonable for the test application.
+[ ] pytest passes.
+[ ] Evidence belongs to the current scan.
+[ ] No unauthorized target was scanned.
+
+## SUMMARY
+
+For the Day 20 scanner, the most important point is:
+
+```
+TARGET CHANGE = CHANGE THE --url ARGUMENT
+```
+
+You normally do NOT need to modify:
+
+```
+scanner/client.py
+scanner/analyzer.py
+scanner/detector.py
+scanner/risk.py
+scanner/models.py
+```
+
+The main files have separate responsibilities:
+
+```
+--url
+    Target
+
+input/paths.txt
+    Paths to request
+
+app/server.py
+    Local vulnerable training application
+
+scanner/client.py
+    HTTP requests
+
+scanner/detector.py
+    Security findings
+
+scanner/risk.py
+    Risk assessment
+
+scanner/reporting.py
+    JSON/TXT reports
+
+tests/
+    Automated verification
+```
+
+This separation allows the scanner to be reused against different
+AUTHORIZED targets without modifying the core scanning logic.

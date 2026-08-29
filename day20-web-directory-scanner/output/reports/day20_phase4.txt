@@ -1,0 +1,33 @@
+============================================================
+DAY 20 - WEB DIRECTORY DISCOVERY SCAN
+============================================================
+
+Target           : http://127.0.0.1:5000
+Scan ID          : 6d1b3a45-a424-45ec-b13c-2fc444d638f2
+Started          : 2026-08-29T09:39:53.843359+00:00
+Completed        : 2026-08-29T09:39:53.843403+00:00
+Duration         : 0.0s
+Wordlist size    : 5
+Requests sent    : 5
+
+SUMMARY
+------------------------------------------------------------
+Total findings   : 1
+Critical         : 0
+High             : 1
+Medium           : 0
+Low              : 0
+
+FINDINGS
+------------------------------------------------------------
+
+[1] SENSITIVE_EXPOSURE
+Severity       : HIGH
+Path           : /.env
+Status         : 200
+Evidence       : Sensitive file returned HTTP 200.
+Recommendation : Remove sensitive files from the web root.
+
+============================================================
+END OF REPORT
+============================================================
