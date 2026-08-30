@@ -1,0 +1,12 @@
+# Day 21 Phase 3 adversarial validation corpus
+
+<script>alert('XSS')</script>
+<img src=x onerror=alert('XSS')>
+<body onload=alert('XSS')>
+<svg onload=alert('XSS')>
+javascript:alert('XSS')
+"><script>alert('XSS')</script>
+' onerror=alert('XSS') x='
+<div>normal text</div>
+&amp;lt;script&amp;gt;
+Hello security lab

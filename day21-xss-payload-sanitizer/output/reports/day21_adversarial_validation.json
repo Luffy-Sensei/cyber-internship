@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0",
+  "tool": "Day 21 XSS Payload Sanitizer",
+  "validation_type": "adversarial_payload_validation",
+  "payload_count": 10,
+  "passed": 10,
+  "failed": 0,
+  "all_passed": true,
+  "cases": [
+    {
+      "case_id": 1,
+      "payload": "<script>alert('XSS')</script>",
+      "passed": true,
+      "detected_tokens": [
+        "SCRIPT_TAG"
+      ],
+      "neutralized": true,
+      "sanitized_output": "[PROHIBITED_TOKEN]:SCRIPT_TAG&gt;alert(&#x27;XSS&#x27;)[PROHIBITED_TOKEN]:SCRIPT_TAG&gt;",
+      "severity": "CRITICAL",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "MEDIUM",
+      "reason": "Detected XSS constructs were neutralized and encoded.",
+      "rationale": "Detected tokens: SCRIPT_TAG. Highest rule severity: CRITICAL. Output context: UNKNOWN. Payload evidence alone cannot establish whether the issue is Stored, Reflected, or DOM-based XSS."
+    },
+    {
+      "case_id": 2,
+      "payload": "<img src=x onerror=alert('XSS')>",
+      "passed": true,
+      "detected_tokens": [
+        "EVENT_HANDLER"
+      ],
+      "neutralized": true,
+      "sanitized_output": "&lt;img src=x [PROHIBITED_TOKEN]:EVENT_HANDLERalert(&#x27;XSS&#x27;)&gt;",
+      "severity": "HIGH",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "MEDIUM",
+      "reason": "Detected XSS constructs were neutralized and encoded.",
+      "rationale": "Detected tokens: EVENT_HANDLER. Highest rule severity: HIGH. Output context: UNKNOWN. Payload evidence alone cannot establish whether the issue is Stored, Reflected, or DOM-based XSS."
+    },
+    {
+      "case_id": 3,
+      "payload": "<body onload=alert('XSS')>",
+      "passed": true,
+      "detected_tokens": [
+        "EVENT_HANDLER"
+      ],
+      "neutralized": true,
+      "sanitized_output": "&lt;body [PROHIBITED_TOKEN]:EVENT_HANDLERalert(&#x27;XSS&#x27;)&gt;",
+      "severity": "HIGH",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "MEDIUM",
+      "reason": "Detected XSS constructs were neutralized and encoded.",
+      "rationale": "Detected tokens: EVENT_HANDLER. Highest rule severity: HIGH. Output context: UNKNOWN. Payload evidence alone cannot establish whether the issue is Stored, Reflected, or DOM-based XSS."
+    },
+    {
+      "case_id": 4,
+      "payload": "<svg onload=alert('XSS')>",
+      "passed": true,
+      "detected_tokens": [
+        "EVENT_HANDLER",
+        "SVG_TAG"
+      ],
+      "neutralized": true,
+      "sanitized_output": "[PROHIBITED_TOKEN]:SVG_TAG [PROHIBITED_TOKEN]:EVENT_HANDLERalert(&#x27;XSS&#x27;)&gt;",
+      "severity": "HIGH",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "MEDIUM",
+      "reason": "Detected XSS constructs were neutralized and encoded.",
+      "rationale": "Detected tokens: EVENT_HANDLER, SVG_TAG. Highest rule severity: HIGH. Output context: UNKNOWN. Payload evidence alone cannot establish whether the issue is Stored, Reflected, or DOM-based XSS."
+    },
+    {
+      "case_id": 5,
+      "payload": "javascript:alert('XSS')",
+      "passed": true,
+      "detected_tokens": [
+        "JAVASCRIPT_SCHEME"
+      ],
+      "neutralized": true,
+      "sanitized_output": "[PROHIBITED_TOKEN]:JAVASCRIPT_SCHEMEalert(&#x27;XSS&#x27;)",
+      "severity": "CRITICAL",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "MEDIUM",
+      "reason": "Detected XSS constructs were neutralized and encoded.",
+      "rationale": "Detected tokens: JAVASCRIPT_SCHEME. Highest rule severity: CRITICAL. Output context: UNKNOWN. Payload evidence alone cannot establish whether the issue is Stored, Reflected, or DOM-based XSS."
+    },
+    {
+      "case_id": 6,
+      "payload": "\"><script>alert('XSS')</script>",
+      "passed": true,
+      "detected_tokens": [
+        "SCRIPT_TAG"
+      ],
+      "neutralized": true,
+      "sanitized_output": "&quot;&gt;[PROHIBITED_TOKEN]:SCRIPT_TAG&gt;alert(&#x27;XSS&#x27;)[PROHIBITED_TOKEN]:SCRIPT_TAG&gt;",
+      "severity": "CRITICAL",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "MEDIUM",
+      "reason": "Detected XSS constructs were neutralized and encoded.",
+      "rationale": "Detected tokens: SCRIPT_TAG. Highest rule severity: CRITICAL. Output context: UNKNOWN. Payload evidence alone cannot establish whether the issue is Stored, Reflected, or DOM-based XSS."
+    },
+    {
+      "case_id": 7,
+      "payload": "' onerror=alert('XSS') x='",
+      "passed": true,
+      "detected_tokens": [
+        "EVENT_HANDLER"
+      ],
+      "neutralized": true,
+      "sanitized_output": "&#x27; [PROHIBITED_TOKEN]:EVENT_HANDLERalert(&#x27;XSS&#x27;) x=&#x27;",
+      "severity": "HIGH",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "MEDIUM",
+      "reason": "Detected XSS constructs were neutralized and encoded.",
+      "rationale": "Detected tokens: EVENT_HANDLER. Highest rule severity: HIGH. Output context: UNKNOWN. Payload evidence alone cannot establish whether the issue is Stored, Reflected, or DOM-based XSS."
+    },
+    {
+      "case_id": 8,
+      "payload": "<div>normal text</div>",
+      "passed": true,
+      "detected_tokens": [],
+      "neutralized": true,
+      "sanitized_output": "&lt;div&gt;normal text&lt;/div&gt;",
+      "severity": "LOW",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "HIGH",
+      "reason": "No configured XSS tokens detected; output remains HTML-encoded according to the sanitizer policy.",
+      "rationale": "No configured XSS indicators were detected."
+    },
+    {
+      "case_id": 9,
+      "payload": "&amp;lt;script&amp;gt;",
+      "passed": true,
+      "detected_tokens": [],
+      "neutralized": true,
+      "sanitized_output": "&amp;amp;lt;script&amp;amp;gt;",
+      "severity": "LOW",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "HIGH",
+      "reason": "No configured XSS tokens detected; output remains HTML-encoded according to the sanitizer policy.",
+      "rationale": "No configured XSS indicators were detected."
+    },
+    {
+      "case_id": 10,
+      "payload": "Hello security lab",
+      "passed": true,
+      "detected_tokens": [],
+      "neutralized": false,
+      "sanitized_output": "Hello security lab",
+      "severity": "LOW",
+      "xss_model": "UNKNOWN",
+      "context": "UNKNOWN",
+      "confidence": "HIGH",
+      "reason": "No configured XSS tokens detected; output remains HTML-encoded according to the sanitizer policy.",
+      "rationale": "No configured XSS indicators were detected."
+    }
+  ]
+}

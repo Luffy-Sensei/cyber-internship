@@ -1,0 +1,340 @@
+DAY 21 — AUTHORIZED TARGET / INPUT GUIDE
+========================================
+
+PURPOSE
+-------
+This guide explains what should be changed when using the Day 21 XSS
+Payload Sanitizer with a different AUTHORIZED test target or payload set.
+
+IMPORTANT SAFETY NOTICE
+-----------------------
+Use this project only for defensive security testing, education, and
+applications for which you have explicit authorization.
+
+Day 21 is currently a payload-analysis and sanitization tool. It does not
+perform web exploitation or automatically send payloads to remote systems.
+
+
+1. WHAT SHOULD I CHANGE?
+------------------------
+
+For a new authorized test corpus, the primary file to change is:
+
+    input/adversarial_payloads.txt
+
+This file contains the payloads/parameters that the sanitizer validates.
+
+Example:
+
+    # Authorized application test corpus
+    normal-user-input
+    <script>alert('test')</script>
+    <img src=x onerror=alert(1)>
+
+Normally, one test input should occupy one line.
+
+DO NOT change the following files just because you are testing a different
+authorized input set:
+
+    scanner/models.py
+    scanner/rules.py
+    scanner/sanitizer.py
+
+Those files implement the reusable sanitizer architecture.
+
+
+2. VALIDATION RUNNER
+--------------------
+
+The validation runner is:
+
+    scanner/validate.py
+
+Run it with:
+
+    python3 -m scanner.validate --verbose
+
+The runner processes the configured payload corpus and generates:
+
+    output/reports/day21_adversarial_validation.json
+
+and:
+
+    output/logs/day21_validation.log
+
+
+3. USING A DIFFERENT PAYLOAD FILE
+---------------------------------
+
+If you want to preserve the original corpus, create another file, for
+example:
+
+    input/my_authorized_payloads.txt
+
+If the current validation runner exposes an input-file CLI option, use
+that option.
+
+If it does not, update only the input-file configuration/default in:
+
+    scanner/validate.py
+
+Do NOT hard-code new payloads into:
+
+    scanner/sanitizer.py
+
+
+4. CHANGING DETECTION RULES
+---------------------------
+
+Only modify:
+
+    scanner/rules.py
+
+when you intentionally want to change how the sanitizer detects
+XSS-related constructs.
+
+Current rule categories include:
+
+    SCRIPT_TAG
+    EVENT_HANDLER
+    JAVASCRIPT_SCHEME
+    IFRAME_TAG
+    SVG_TAG
+    OBJECT_TAG
+
+Whenever a rule is added, removed, or changed, update the corresponding
+tests:
+
+    tests/test_rules.py
+    tests/test_sanitizer.py
+
+Then run:
+
+    python3 -m pytest -q
+
+
+5. CHANGING SANITIZATION BEHAVIOR
+----------------------------------
+
+Only modify:
+
+    scanner/sanitizer.py
+
+when you intentionally want to change the sanitization/neutralization
+logic.
+
+The sanitizer currently separates:
+
+    Detection
+    HTML encoding
+    Rule-based neutralization
+    Structured result generation
+
+After any sanitizer change:
+
+    python3 -m pytest -q
+
+Then:
+
+    git diff --check
+
+
+6. CHANGING THE ANALYSIS LAYER
+------------------------------
+
+If you want to change severity, classification, or higher-level security
+analysis, inspect:
+
+    scanner/analyzer.py
+
+Changes to analysis behavior should have corresponding regression tests.
+
+
+7. EVIDENCE OUTPUT
+------------------
+
+The validation process produces:
+
+    output/reports/day21_adversarial_validation.json
+
+and:
+
+    output/logs/day21_validation.log
+
+Keep generated evidence under:
+
+    output/
+
+Do not manually modify generated evidence unless there is a specific
+documentation/reproduction requirement.
+
+
+8. RECOMMENDED WORKFLOW FOR A NEW AUTHORIZED TEST SET
+------------------------------------------------------
+
+Step 1:
+Create or edit the authorized payload corpus:
+
+    nano input/my_authorized_payloads.txt
+
+Step 2:
+Add the authorized test inputs.
+
+Step 3:
+Run the complete test suite:
+
+    python3 -m pytest -q
+
+Step 4:
+Run the validation:
+
+    python3 -m scanner.validate --verbose
+
+Step 5:
+Inspect the JSON evidence:
+
+    cat output/reports/day21_adversarial_validation.json
+
+Step 6:
+Inspect the execution log:
+
+    cat output/logs/day21_validation.log
+
+Step 7:
+Check repository formatting:
+
+    git diff --check
+
+
+9. IMPORTANT DIFFERENCE FROM DAY 20
+------------------------------------
+
+Day 20 was a web directory scanner.
+
+Therefore Day 20 had:
+
+    HTTP target
+    URL
+    wordlist
+    network requests
+
+Day 21 is currently a payload sanitizer.
+
+Therefore Day 21 has:
+
+    Payload corpus
+    Detection rules
+    Sanitization logic
+    Analysis
+    Validation evidence
+
+So, unlike Day 20:
+
+    Day 21 does NOT currently require changing a URL.
+
+For a different authorized application, the main thing to change is the
+INPUT DATA being analyzed.
+
+
+10. IF A FUTURE VERSION CONNECTS TO A WEB APPLICATION
+------------------------------------------------------
+
+If a future Day 21 phase adds HTTP/application integration, keep the
+sanitizer reusable.
+
+The integration layer should:
+
+    1. Receive an authorized application parameter.
+    2. Pass the parameter to sanitize_user_input().
+    3. Record the SanitizationResult.
+    4. Apply context-appropriate output encoding.
+    5. Record the security result.
+    6. Produce auditable evidence.
+
+Do not treat regular-expression detection or blacklist filtering as a
+universal XSS defense.
+
+Production applications should additionally use:
+
+    Context-specific output encoding
+    Framework auto-escaping
+    Safe templating
+    Safe DOM APIs
+    Input validation
+    Content Security Policy
+    Appropriate security testing
+
+
+11. QUICK REFERENCE
+-------------------
+
+INPUT CORPUS:
+    input/adversarial_payloads.txt
+
+CORE SANITIZER:
+    scanner/sanitizer.py
+
+DETECTION RULES:
+    scanner/rules.py
+
+RESULT MODEL:
+    scanner/models.py
+
+ANALYSIS:
+    scanner/analyzer.py
+
+VALIDATION RUNNER:
+    scanner/validate.py
+
+TESTS:
+    tests/
+
+JSON EVIDENCE:
+    output/reports/day21_adversarial_validation.json
+
+LOG:
+    output/logs/day21_validation.log
+
+
+12. COMMANDS
+------------
+
+Run tests:
+
+    python3 -m pytest -q
+
+Run validation:
+
+    python3 -m scanner.validate --verbose
+
+Check formatting:
+
+    git diff --check
+
+Check repository status:
+
+    git status --short
+
+
+FINAL RULE
+----------
+
+If you are testing a different AUTHORIZED application or dataset:
+
+    CHANGE THE INPUT CORPUS FIRST.
+
+Only modify:
+
+    scanner/rules.py
+
+or:
+
+    scanner/sanitizer.py
+
+when you are intentionally changing the security behavior of the tool.
+
+When changing security behavior, update the tests and rerun the complete
+validation suite.
+
+Day 21 is designed as a defensive laboratory component, not as a
+universal XSS prevention mechanism.
