@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "tool": "day22-api-rate-limiter",
+  "policy": {
+    "name": "default",
+    "capacity": 3.0,
+    "refill_rate_per_sec": 0.5
+  },
+  "summary": {
+    "total_requests": 7,
+    "allowed_requests": 5,
+    "denied_requests": 2,
+    "denial_rate": 0.2857142857142857,
+    "clients_tested": 2,
+    "refill_verified": true,
+    "isolation_verified": true
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "client_id": "client-A",
+      "elapsed_seconds": 0.0,
+      "allowed": true,
+      "remaining_tokens": 2.0,
+      "retry_after_seconds": 0.0
+    },
+    {
+      "sequence": 2,
+      "client_id": "client-A",
+      "elapsed_seconds": 0.0,
+      "allowed": true,
+      "remaining_tokens": 1.0,
+      "retry_after_seconds": 0.0
+    },
+    {
+      "sequence": 3,
+      "client_id": "client-A",
+      "elapsed_seconds": 0.0,
+      "allowed": true,
+      "remaining_tokens": 0.0,
+      "retry_after_seconds": 0.0
+    },
+    {
+      "sequence": 4,
+      "client_id": "client-A",
+      "elapsed_seconds": 0.0,
+      "allowed": false,
+      "remaining_tokens": 0.0,
+      "retry_after_seconds": 2.0
+    },
+    {
+      "sequence": 5,
+      "client_id": "client-A",
+      "elapsed_seconds": 0.0,
+      "allowed": false,
+      "remaining_tokens": 0.0,
+      "retry_after_seconds": 2.0
+    },
+    {
+      "sequence": 6,
+      "client_id": "client-A",
+      "elapsed_seconds": 2.0,
+      "allowed": true,
+      "remaining_tokens": 0.0,
+      "retry_after_seconds": 0.0
+    },
+    {
+      "sequence": 7,
+      "client_id": "client-B",
+      "elapsed_seconds": 0.0,
+      "allowed": true,
+      "remaining_tokens": 2.0,
+      "retry_after_seconds": 0.0
+    }
+  ]
+}

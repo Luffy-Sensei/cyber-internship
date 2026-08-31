@@ -1,0 +1,405 @@
+# DAY 22 — AUTHORIZED TARGET / INTEGRATION GUIDE
+
+## Purpose
+
+This document explains how to adapt the Day 22 API rate-limiting component
+for testing against an application or API that you are explicitly authorized
+to assess.
+
+IMPORTANT:
+This laboratory is a defensive rate-limiting component. It does not perform
+network discovery or vulnerability exploitation.
+
+Only integrate or execute it against systems for which you have explicit
+authorization.
+
+---
+
+1. WHAT SHOULD BE CHANGED?
+
+---
+
+Do NOT modify scanner/limiter.py simply to change an application target.
+
+The core limiter is intentionally independent from a particular API
+hostname, IP address, or URL.
+
+The important configuration layers are:
+
+```
+scanner/config.py
+scanner/policies.py
+scanner/engine.py
+scanner/validation.py
+```
+
+Their responsibilities are different.
+
+## scanner/config.py
+
+Defines and validates operational configuration.
+
+Use this layer when configuration values such as capacity or refill rate
+need to be changed.
+
+## scanner/policies.py
+
+Defines named rate-limiting policies.
+
+Use this layer when an authorized application requires a different policy.
+
+Examples:
+
+```
+authentication endpoint
+normal API endpoint
+expensive API endpoint
+tenant-specific API
+```
+
+## scanner/engine.py
+
+Provides the decision-oriented interface around the limiter.
+
+This is the appropriate integration boundary when an application needs to
+ask:
+
+```
+"Should this request be allowed?"
+```
+
+## scanner/validation.py
+
+Contains the deterministic laboratory execution runner.
+
+Use this for controlled validation of the algorithm itself.
+
+Do not treat the validation runner as a replacement for production API
+middleware or a production gateway.
+
+---
+
+2. CHANGING THE RATE-LIMIT POLICY
+
+---
+
+If an authorized application requires different limits, prefer changing
+the policy configuration rather than modifying the Token Bucket algorithm.
+
+For example, a policy might conceptually define:
+
+```
+capacity = 10
+refill_rate = 2.0
+```
+
+This means the client can initially consume up to ten tokens and tokens are
+replenished at two tokens per second.
+
+The exact values should be selected according to the authorized
+application's requirements and expected traffic profile.
+
+After changing a policy, run:
+
+```
+python3 -m pytest -q
+```
+
+Then perform the deterministic validation:
+
+```
+python3 -m scanner.validation --verbose
+```
+
+---
+
+3. CHANGING THE CLIENT IDENTITY
+
+---
+
+The limiter maintains independent state per client.
+
+The laboratory currently demonstrates separate identities such as:
+
+```
+client-A
+client-B
+```
+
+A production integration could use an appropriate trusted identity such
+as:
+
+```
+authenticated user ID
+API key identifier
+tenant identifier
+trusted client identity
+```
+
+IP addresses may also be used where appropriate, but production systems
+must account for NAT, reverse proxies, load balancers, and trusted proxy
+configuration.
+
+Do not blindly trust client-controlled forwarding headers.
+
+---
+
+4. INTEGRATING WITH AN AUTHORIZED API
+
+---
+
+The intended production architecture is:
+
+```
+                CLIENT
+                   |
+                   v
+           +---------------+
+           | WAF / LB      |
+           +-------+-------+
+                   |
+                   v
+           +---------------+
+           | API Gateway   |
+           |               |
+           | Rate Limiter  |
+           +-------+-------+
+                   |
+            +------+------+
+            |             |
+          ALLOW          DENY
+            |             |
+            v             v
+      Application      HTTP 429
+            |
+            v
+      Backend Services
+```
+
+The gateway or middleware should obtain the appropriate client identity
+and pass the request through the rate-limit engine.
+
+If the decision is ALLOW, normal request processing continues.
+
+If the decision is DENY, the gateway should return an appropriate
+rate-limit response, commonly HTTP 429 Too Many Requests.
+
+---
+
+5. IMPORTANT: THE CURRENT VALIDATION RUNNER
+
+---
+
+The current validation runner is intentionally deterministic.
+
+Run:
+
+```
+python3 -m scanner.validation --verbose
+```
+
+The laboratory validation demonstrates:
+
+```
+Request 1 -> ALLOW
+Request 2 -> ALLOW
+Request 3 -> ALLOW
+Request 4 -> DENY
+Request 5 -> DENY
+Request 6 -> ALLOW after refill
+Request 7 -> ALLOW for another client
+```
+
+The current validation therefore verifies:
+
+```
+token consumption
+bucket exhaustion
+denial behavior
+token refill
+client isolation
+```
+
+This is local algorithm validation.
+
+It should not be confused with sending uncontrolled traffic to an external
+application.
+
+---
+
+6. IF TESTING AN AUTHORIZED APPLICATION
+
+---
+
+Before integration, establish:
+
+```
+1. Written authorization.
+2. Approved hostname/IP/API endpoint.
+3. Approved testing window.
+4. Approved request limits.
+5. Approved client identity.
+6. Monitoring/contact procedure.
+7. Rollback procedure.
+```
+
+Start with conservative rate limits.
+
+Do not begin with aggressive request volumes.
+
+The objective is to verify that legitimate traffic remains available while
+excessive request volume is correctly throttled.
+
+---
+
+7. SAFE CHANGE WORKFLOW
+
+---
+
+After changing an authorized configuration:
+
+```
+cd ~/cyber-internship/cyber-internship-FINAL/day22-api-rate-limiter
+```
+
+Run:
+
+```
+python3 -m pytest -q
+```
+
+Then:
+
+```
+git diff --check
+```
+
+Then run the local validation:
+
+```
+python3 -m scanner.validation --verbose
+```
+
+Inspect:
+
+```
+output/logs/day22_validation.log
+```
+
+and:
+
+```
+output/reports/day22_rate_limit_validation.json
+```
+
+Only after the local implementation remains correct should an authorized
+integration environment be considered.
+
+---
+
+8. WHAT NOT TO CHANGE
+
+---
+
+Do not modify the core Token Bucket logic merely to accommodate a target
+hostname or IP address.
+
+Do not hard-code credentials, API keys, session tokens, or other secrets
+into this repository.
+
+Do not commit production secrets into Git.
+
+Do not use the laboratory against systems without explicit authorization.
+
+Do not intentionally generate disruptive traffic against production
+systems.
+
+---
+
+9. EVIDENCE EXPECTATIONS
+
+---
+
+For each authorized integration test, retain appropriate evidence such as:
+
+```
+configuration used
+policy used
+client identity model
+request count
+allowed requests
+denied requests
+refill behavior
+HTTP 429 behavior where applicable
+timestamps
+logs
+generated report
+```
+
+Avoid storing credentials, authentication tokens, personal information,
+or other sensitive production data in laboratory evidence.
+
+---
+
+10. SUMMARY
+
+---
+
+The Day 22 component is designed so that the Token Bucket implementation
+remains reusable while application-specific behavior is configured around
+it.
+
+The preferred architecture is:
+
+```
+Authorized Application
+        |
+        v
+   Configuration
+        |
+        v
+      Policy
+        |
+        v
+  Rate Limit Engine
+        |
+        v
+   Token Bucket
+        |
+   +----+----+
+   |         |
+ ALLOW      DENY
+   |         |
+   v         v
+Request    HTTP 429
+```
+
+For laboratory validation, use scanner/validation.py.
+
+For rate-limit configuration, use scanner/config.py and
+scanner/policies.py.
+
+For application integration, use scanner/engine.py as the decision
+boundary.
+
+Keep scanner/limiter.py focused on the Token Bucket algorithm itself.
+
+The safest workflow is:
+
+```
+Configure
+    ->
+Unit Test
+    ->
+Local Validation
+    ->
+Review Evidence
+    ->
+Authorized Integration
+    ->
+Monitor
+    ->
+Document
+```
+
+# END OF GUIDE
