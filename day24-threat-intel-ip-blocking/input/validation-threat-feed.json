@@ -1,0 +1,35 @@
+{
+  "feed_id": "day24-validation-feed-001",
+  "source": "controlled-validation-fixture",
+  "indicators": [
+    {
+      "ip": "103.45.67.89",
+      "indicator": "malware_c2",
+      "risk_score": 98
+    },
+    {
+      "ip": "185.10.11.12",
+      "indicator": "botnet_node",
+      "risk_score": 85
+    },
+    {
+      "ip": "198.51.100.33",
+      "indicator": "brute_forcer",
+      "risk_score": 92
+    },
+    {
+      "ip": "not-an-ip",
+      "indicator": "malware_c2",
+      "risk_score": 95
+    },
+    {
+      "ip": "192.0.2.10",
+      "indicator": "unknown",
+      "risk_score": 150
+    },
+    {
+      "ip": "192.0.2.20",
+      "indicator": "missing-risk"
+    }
+  ]
+}

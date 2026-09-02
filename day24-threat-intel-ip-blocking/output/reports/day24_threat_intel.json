@@ -1,0 +1,61 @@
+{
+  "blocks_proposed": 2,
+  "decisions": [
+    {
+      "action": "BLOCK",
+      "indicator": "malware_c2",
+      "ip": "103.45.67.89",
+      "mode": "DRY-RUN",
+      "policy": "default-threat-block-policy",
+      "reason": "Risk score meets or exceeds the configured blocking threshold.",
+      "risk_score": 98,
+      "rule": {
+        "enabled": true,
+        "ip": "103.45.67.89",
+        "reason": "Risk score meets or exceeds the configured blocking threshold.",
+        "source": "controlled-threat-intelligence-fixture"
+      },
+      "status": "PROPOSED"
+    },
+    {
+      "action": "MONITOR",
+      "indicator": "botnet_node",
+      "ip": "185.10.11.12",
+      "mode": "DRY-RUN",
+      "policy": "default-threat-block-policy",
+      "reason": "No firewall block rule generated for MONITOR decision.",
+      "risk_score": 85,
+      "rule": null,
+      "status": "SKIPPED"
+    },
+    {
+      "action": "BLOCK",
+      "indicator": "brute_forcer",
+      "ip": "198.51.100.33",
+      "mode": "DRY-RUN",
+      "policy": "default-threat-block-policy",
+      "reason": "Risk score meets or exceeds the configured blocking threshold.",
+      "risk_score": 92,
+      "rule": {
+        "enabled": true,
+        "ip": "198.51.100.33",
+        "reason": "Risk score meets or exceeds the configured blocking threshold.",
+        "source": "controlled-threat-intelligence-fixture"
+      },
+      "status": "PROPOSED"
+    }
+  ],
+  "execution_mode": "DRY-RUN",
+  "feed_id": "day24-mock-feed-001",
+  "feed_source": "controlled-threat-intelligence-fixture",
+  "firewall_modification": false,
+  "ignored": 0,
+  "indicators_received": 3,
+  "indicators_valid": 3,
+  "monitored": 1,
+  "pipeline_id": "4b40c162-69ec-4e30-acaf-a83804a5c9c6",
+  "policy": "default-threat-block-policy",
+  "rejected": 0,
+  "timestamp": "2026-09-02T07:20:16.964505+00:00",
+  "validation_status": "VALIDATED"
+}

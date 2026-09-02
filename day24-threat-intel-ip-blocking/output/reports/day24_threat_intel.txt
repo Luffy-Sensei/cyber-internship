@@ -1,0 +1,50 @@
+DAY 24 - THREAT INTELLIGENCE PIPELINE REPORT
+==============================================================
+Pipeline ID          : 4b40c162-69ec-4e30-acaf-a83804a5c9c6
+Timestamp            : 2026-09-02T07:20:16.964505+00:00
+Feed ID              : day24-mock-feed-001
+Feed Source          : controlled-threat-intelligence-fixture
+Indicators Received  : 3
+Indicators Valid     : 3
+Blocks Proposed      : 2
+Monitored            : 1
+Ignored              : 0
+Rejected             : 0
+Policy               : default-threat-block-policy
+Execution Mode       : DRY-RUN
+Validation Status    : VALIDATED
+Firewall Modification: False
+
+DECISIONS
+--------------------------------------------------------------
+IP       : 103.45.67.89
+Indicator: malware_c2
+Risk     : 98
+Action   : BLOCK
+Status   : PROPOSED
+Reason   : Risk score meets or exceeds the configured blocking threshold.
+Policy   : default-threat-block-policy
+Mode     : DRY-RUN
+
+IP       : 185.10.11.12
+Indicator: botnet_node
+Risk     : 85
+Action   : MONITOR
+Status   : SKIPPED
+Reason   : No firewall block rule generated for MONITOR decision.
+Policy   : default-threat-block-policy
+Mode     : DRY-RUN
+
+IP       : 198.51.100.33
+Indicator: brute_forcer
+Risk     : 92
+Action   : BLOCK
+Status   : PROPOSED
+Reason   : Risk score meets or exceeds the configured blocking threshold.
+Policy   : default-threat-block-policy
+Mode     : DRY-RUN
+
+AUDIT RESULT
+--------------------------------------------------------------
+Firewall modification : NONE
+Validation status     : VALIDATED

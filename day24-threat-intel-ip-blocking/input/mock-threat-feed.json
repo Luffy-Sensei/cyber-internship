@@ -1,0 +1,21 @@
+{
+  "feed_id": "day24-mock-feed-001",
+  "source": "controlled-threat-intelligence-fixture",
+  "indicators": [
+    {
+      "ip": "103.45.67.89",
+      "indicator": "malware_c2",
+      "risk_score": 98
+    },
+    {
+      "ip": "185.10.11.12",
+      "indicator": "botnet_node",
+      "risk_score": 85
+    },
+    {
+      "ip": "198.51.100.33",
+      "indicator": "brute_forcer",
+      "risk_score": 92
+    }
+  ]
+}
