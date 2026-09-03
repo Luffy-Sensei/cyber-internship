@@ -1,0 +1,133 @@
+DAY 25 FILE UPLOAD SECURITY REPORT
+========================================
+
+SUMMARY
+-------
+Total events : 10
+Accepted     : 4
+Rejected     : 6
+Stored       : 4
+Not stored   : 6
+
+VALIDATION EVENTS
+------------------
+
+Event #1
+Filename       : valid.jpg
+Action         : ACCEPT
+Status         : VALID
+Detected type  : JPEG
+Size           : 17 bytes
+Stored         : True
+Storage name   : 5a2a598435d34aea81baad8018a8006e.jpg
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File signature validated as JPEG and matches the upload policy.
+Timestamp      : 2026-09-03T07:51:52.135919+00:00
+
+Event #2
+Filename       : valid.png
+Action         : ACCEPT
+Status         : VALID
+Detected type  : PNG
+Size           : 21 bytes
+Stored         : True
+Storage name   : 1db76380cf9549249b8202d359f1ae11.png
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File signature validated as PNG and matches the upload policy.
+Timestamp      : 2026-09-03T07:51:52.139026+00:00
+
+Event #3
+Filename       : fake.jpg
+Action         : REJECT
+Status         : INVALID
+Detected type  : None
+Size           : 33 bytes
+Stored         : False
+Storage name   : None
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File signature is unknown or unsupported.
+Timestamp      : 2026-09-03T07:51:52.140422+00:00
+
+Event #4
+Filename       : fake.png
+Action         : REJECT
+Status         : INVALID
+Detected type  : None
+Size           : 24 bytes
+Stored         : False
+Storage name   : None
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File signature is unknown or unsupported.
+Timestamp      : 2026-09-03T07:51:52.147763+00:00
+
+Event #5
+Filename       : unknown.txt
+Action         : REJECT
+Status         : INVALID
+Detected type  : None
+Size           : 19 bytes
+Stored         : False
+Storage name   : None
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File extension is not allowlisted: .txt
+Timestamp      : 2026-09-03T07:51:52.148637+00:00
+
+Event #6
+Filename       : valid.jpg
+Action         : ACCEPT
+Status         : VALID
+Detected type  : JPEG
+Size           : 17 bytes
+Stored         : True
+Storage name   : 20922221566048a89bf3a5ef089a65ef.jpg
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File signature validated as JPEG and matches the upload policy.
+Timestamp      : 2026-09-03T08:00:54.380950+00:00
+
+Event #7
+Filename       : valid.png
+Action         : ACCEPT
+Status         : VALID
+Detected type  : PNG
+Size           : 21 bytes
+Stored         : True
+Storage name   : f47fb53c102c42ab8eb419636ac11227.png
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File signature validated as PNG and matches the upload policy.
+Timestamp      : 2026-09-03T08:00:54.382416+00:00
+
+Event #8
+Filename       : fake.jpg
+Action         : REJECT
+Status         : INVALID
+Detected type  : None
+Size           : 33 bytes
+Stored         : False
+Storage name   : None
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File signature is unknown or unsupported.
+Timestamp      : 2026-09-03T08:00:54.382977+00:00
+
+Event #9
+Filename       : fake.png
+Action         : REJECT
+Status         : INVALID
+Detected type  : None
+Size           : 24 bytes
+Stored         : False
+Storage name   : None
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File signature is unknown or unsupported.
+Timestamp      : 2026-09-03T08:00:54.383748+00:00
+
+Event #10
+Filename       : unknown.txt
+Action         : REJECT
+Status         : INVALID
+Detected type  : None
+Size           : 19 bytes
+Stored         : False
+Storage name   : None
+Storage class  : NON_EXECUTABLE_UPLOAD_STORAGE
+Reason         : File extension is not allowlisted: .txt
+Timestamp      : 2026-09-03T08:00:54.384439+00:00

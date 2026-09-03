@@ -1,0 +1,132 @@
+{
+  "events": [
+    {
+      "action": "ACCEPT",
+      "detected_type": "JPEG",
+      "filename": "valid.jpg",
+      "reason": "File signature validated as JPEG and matches the upload policy.",
+      "size_bytes": 17,
+      "status": "VALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": "5a2a598435d34aea81baad8018a8006e.jpg",
+      "stored": true,
+      "timestamp": "2026-09-03T07:51:52.135919+00:00"
+    },
+    {
+      "action": "ACCEPT",
+      "detected_type": "PNG",
+      "filename": "valid.png",
+      "reason": "File signature validated as PNG and matches the upload policy.",
+      "size_bytes": 21,
+      "status": "VALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": "1db76380cf9549249b8202d359f1ae11.png",
+      "stored": true,
+      "timestamp": "2026-09-03T07:51:52.139026+00:00"
+    },
+    {
+      "action": "REJECT",
+      "detected_type": null,
+      "filename": "fake.jpg",
+      "reason": "File signature is unknown or unsupported.",
+      "size_bytes": 33,
+      "status": "INVALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": null,
+      "stored": false,
+      "timestamp": "2026-09-03T07:51:52.140422+00:00"
+    },
+    {
+      "action": "REJECT",
+      "detected_type": null,
+      "filename": "fake.png",
+      "reason": "File signature is unknown or unsupported.",
+      "size_bytes": 24,
+      "status": "INVALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": null,
+      "stored": false,
+      "timestamp": "2026-09-03T07:51:52.147763+00:00"
+    },
+    {
+      "action": "REJECT",
+      "detected_type": null,
+      "filename": "unknown.txt",
+      "reason": "File extension is not allowlisted: .txt",
+      "size_bytes": 19,
+      "status": "INVALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": null,
+      "stored": false,
+      "timestamp": "2026-09-03T07:51:52.148637+00:00"
+    },
+    {
+      "action": "ACCEPT",
+      "detected_type": "JPEG",
+      "filename": "valid.jpg",
+      "reason": "File signature validated as JPEG and matches the upload policy.",
+      "size_bytes": 17,
+      "status": "VALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": "20922221566048a89bf3a5ef089a65ef.jpg",
+      "stored": true,
+      "timestamp": "2026-09-03T08:00:54.380950+00:00"
+    },
+    {
+      "action": "ACCEPT",
+      "detected_type": "PNG",
+      "filename": "valid.png",
+      "reason": "File signature validated as PNG and matches the upload policy.",
+      "size_bytes": 21,
+      "status": "VALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": "f47fb53c102c42ab8eb419636ac11227.png",
+      "stored": true,
+      "timestamp": "2026-09-03T08:00:54.382416+00:00"
+    },
+    {
+      "action": "REJECT",
+      "detected_type": null,
+      "filename": "fake.jpg",
+      "reason": "File signature is unknown or unsupported.",
+      "size_bytes": 33,
+      "status": "INVALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": null,
+      "stored": false,
+      "timestamp": "2026-09-03T08:00:54.382977+00:00"
+    },
+    {
+      "action": "REJECT",
+      "detected_type": null,
+      "filename": "fake.png",
+      "reason": "File signature is unknown or unsupported.",
+      "size_bytes": 24,
+      "status": "INVALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": null,
+      "stored": false,
+      "timestamp": "2026-09-03T08:00:54.383748+00:00"
+    },
+    {
+      "action": "REJECT",
+      "detected_type": null,
+      "filename": "unknown.txt",
+      "reason": "File extension is not allowlisted: .txt",
+      "size_bytes": 19,
+      "status": "INVALID",
+      "storage_class": "NON_EXECUTABLE_UPLOAD_STORAGE",
+      "storage_name": null,
+      "stored": false,
+      "timestamp": "2026-09-03T08:00:54.384439+00:00"
+    }
+  ],
+  "report": "DAY 25 FILE UPLOAD SECURITY REPORT",
+  "summary": {
+    "accepted": 4,
+    "not_stored": 6,
+    "rejected": 6,
+    "stored": 4,
+    "total_events": 10
+  }
+}
