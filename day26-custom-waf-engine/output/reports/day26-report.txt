@@ -1,0 +1,30 @@
+DAY 26 WAF SECURITY REPORT
+============================
+
+Run ID            : 8cd7e918-dfe9-44d2-8be8-64e9d623f234
+Timestamp         : 2026-09-04T13:21:22.747849+00:00
+Requests processed: 2
+Allowed           : 1
+Monitored         : 0
+Blocked           : 1
+Detections        : 1
+
+Rules Triggered
+---------------
+- XSS-001
+
+Decisions
+---------
+
+Request ID : req-001
+Action     : ALLOW
+Detections : 0
+
+Request ID : req-002
+Action     : BLOCK
+Detections : 1
+Rule       : XSS-001
+Category   : XSS
+Severity   : HIGH
+Field      : query
+Confidence : HIGH

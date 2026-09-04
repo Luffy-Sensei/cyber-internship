@@ -1,0 +1,33 @@
+{
+  "allowed": 1,
+  "blocked": 1,
+  "decisions": [
+    {
+      "action": "ALLOW",
+      "detections": [],
+      "request_id": "req-001"
+    },
+    {
+      "action": "BLOCK",
+      "detections": [
+        {
+          "category": "XSS",
+          "confidence": "HIGH",
+          "evidence": "<script",
+          "matched_field": "query",
+          "rule_id": "XSS-001",
+          "severity": "HIGH"
+        }
+      ],
+      "request_id": "req-002"
+    }
+  ],
+  "detections": 1,
+  "monitored": 0,
+  "requests_processed": 2,
+  "rules_triggered": [
+    "XSS-001"
+  ],
+  "run_id": "8cd7e918-dfe9-44d2-8be8-64e9d623f234",
+  "timestamp": "2026-09-04T13:21:22.747849+00:00"
+}
